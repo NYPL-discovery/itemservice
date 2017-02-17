@@ -6,6 +6,8 @@ This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http
 
 ## Installation
 
+* Initialize the `Config` class.
+
 ## Requirements
 
 * PHP >=7.0
