@@ -25,9 +25,9 @@ Config::initialize(__DIR__ . '/config');
 
 $service = new NYPL\Starter\Service();
 
-$service->get("/v0.1/bibs", function (Request $request, Response $response) {
-    $controller = new Controller\BibController($request, $response);
-    return $controller->getBibs();
+$service->get("/v0.1/items", function (Request $request, Response $response) {
+    $controller = new Controller\ItemController($request, $response);
+    return $controller->getItems();
 });
 ~~~~
 

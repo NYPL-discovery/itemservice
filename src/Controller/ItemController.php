@@ -47,10 +47,16 @@ final class ItemController extends Controller
      *     }
      * )
      */
-    public function createItem()
+    public function createItem($nyplSource = "", $id = "")
     {
-        $item = new Item($this->getRequest()->getParsedBody());
+        $data = $this->getRequest()->getParsedBody();
 
+        if ($nyplSource && $id) {
+            $data['nyplSource'] = $nyplSource;
+            $data['bibIds'] = [$id];
+        }
+
+        $item = new Item($data);
         $item->create(true);
 
         return $this->getResponse()->withJson(
@@ -119,13 +125,18 @@ final class ItemController extends Controller
      *     }
      * )
      */
-    public function getItems()
+    public function getItems($nyplSource = '', $id = '')
     {
+        $items = new ModelSet(new Item());
+
+        if ($nyplSource && $id) {
+            $items->addFilter(new Filter('nyplSource', $nyplSource));
+            $items->addFilter(new Filter('bibIds', $id, true));
+        }
+
         return $this->getDefaultReadResponse(
-            new ModelSet(new Item()),
-            new ItemsResponse(),
-            null,
-            ['barcode', 'nyplSource', 'id']
+            $items,
+            new ItemsResponse()
         );
     }
 
