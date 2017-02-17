@@ -9,41 +9,19 @@ module.exports = function(grunt) {
 	var path = require('path');
 	grunt.initConfig({
 		lambda_deploy: {
-            service_general: {
-				package: 'serviceGeneral',
+            itemService: {
+				package: 'itemService',
 				options: {
 					file_name: 'index.js',
 					handler: 'handler',
 				},
-				arn: 'arn:aws:lambda:us-east-1:' + grunt.option('account-id') + ':function:serviceGeneral',
-			},
-            service_auth: {
-                package: 'serviceAuth',
-                options: {
-                    file_name: 'index.js',
-                    handler: 'handler',
-                },
-                arn: 'arn:aws:lambda:us-east-1:' + grunt.option('account-id') + ':function:serviceAuth',
-            },
-            service_patron: {
-                package: 'servicePatron',
-                options: {
-                    file_name: 'index.js',
-                    handler: 'handler',
-                },
-                arn: 'arn:aws:lambda:us-east-1:' + grunt.option('account-id') + ':function:servicePatron',
-            },
+				arn: 'arn:aws:lambda:us-east-1:' + grunt.option('account-id') + ':function:itemService',
+			}
 		},
 		lambda_package: {
-            service_general: {
-				package: 'serviceGeneral',
-			},
-            service_auth: {
-                package: 'serviceAuth',
-            },
-            service_patron: {
-                package: 'servicePatron',
-            }
+            itemService: {
+				package: 'itemService',
+			}
 		},
 		env: {
 			prod: {
@@ -54,7 +32,5 @@ module.exports = function(grunt) {
 	});
 
 
-    grunt.registerTask('deploy_service_general', ['env:prod', 'lambda_package:service_general', 'lambda_deploy:service_general']);
-    grunt.registerTask('deploy_service_auth', ['env:prod', 'lambda_package:service_auth', 'lambda_deploy:service_auth']);
-    grunt.registerTask('deploy_service_patron', ['env:prod', 'lambda_package:service_patron', 'lambda_deploy:service_patron']);
+    grunt.registerTask('deploy', ['env:prod', 'lambda_package:itemService', 'lambda_deploy:itemService']);
 };
