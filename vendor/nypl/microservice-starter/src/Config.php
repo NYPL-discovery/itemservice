@@ -2,6 +2,7 @@
 namespace NYPL\Starter;
 
 use Dotenv\Dotenv;
+use Dotenv\Exception\InvalidPathException;
 
 class Config
 {
@@ -58,9 +59,10 @@ class Config
 
     protected static function loadConfiguration()
     {
-        if (file_exists(self::getConfigDirectory() . '/' . self::PRIVATE_CONFIG_FILE)) {
+        try {
             $dotEnv = new Dotenv(self::getConfigDirectory(), self::PRIVATE_CONFIG_FILE);
             $dotEnv->load();
+        } catch (InvalidPathException $exception) {
         }
 
         $dotEnv->required(self::getPrivateRequired());
