@@ -1,6 +1,6 @@
 # NYPL Item Service
 
-This package is intended to be used as Lambda-based Item Service using the [NYPL PHP Microservice Starter](https://github.com/NYPL/php-microservice-starter).
+This package is intended to be used as a Lambda-based Item Service using the [NYPL PHP Microservice Starter](https://github.com/NYPL/php-microservice-starter).
 
 This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/), and [PSR-4](http://www.php-fig.org/psr/psr-4/) (using the [Composer](https://getcomposer.org/) autoloader).
 
