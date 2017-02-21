@@ -1,8 +1,8 @@
-TIME_ZONE = "America/New_York";
+TIME_ZONE = "America/New_York"
 
-DB_CONNECT_STRING = "pgsql:host=apiservice.cicyc5fazypj.us-east-1.rds.amazonaws.com;dbname=nypl";
+DB_CONNECT_STRING = "pgsql:host=apiservice.cicyc5fazypj.us-east-1.rds.amazonaws.com;dbname=nypl"
 
-SLACK_CHANNEL = "service-logging";
-SLACK_USERNAME = "service-general";
+SLACK_CHANNEL = "service-logging"
+SLACK_USERNAME = "service-general"
 
-AMAZON_REGION = "us-east-1";
+AMAZON_REGION = "us-east-1"
