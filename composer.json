@@ -2,10 +2,7 @@
   "name": "nypl-item-service",
   "description": "NYPL Item Service",
   "require": {
-    "nypl/microservice-starter": "~0.1",
-    "guzzlehttp/guzzle": "6.2.2",
-    "firebase/php-jwt": "4.0.0",
-    "zircote/swagger-php": "2.0.7"
+    "nypl/microservice-starter": "~0.1"
   },
   "require-dev": {
   },
