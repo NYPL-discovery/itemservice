@@ -3,6 +3,6 @@ TIME_ZONE = "America/New_York"
 DB_CONNECT_STRING = "pgsql:host=apiservice.cicyc5fazypj.us-east-1.rds.amazonaws.com;dbname=nypl"
 
 SLACK_CHANNEL = "service-logging"
-SLACK_USERNAME = "service-item"
+SLACK_USERNAME = "itemService"
 
 AWS_DEFAULT_REGION = "us-east-1"
