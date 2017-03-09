@@ -4,7 +4,7 @@ namespace NYPL\Starter;
 use NYPL\Starter\Filter\OrFilter;
 use NYPL\Starter\Filter\QueryFilter;
 use NYPL\Starter\Model\Source;
-use NYPL\Starter\Model\Identity;
+use NYPL\Starter\Model\IdentityHeader;
 use NYPL\Starter\Model\Response\SuccessResponse;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
@@ -12,6 +12,10 @@ use Slim\Http\Response;
 
 abstract class Controller
 {
+    const ACCEPT_HEADER = 'Accept';
+
+    const CONTENT_TYPE_HEADER = 'Content-type';
+
     const TEXT_CONTENT_TYPE = 'text/plain';
 
     const HTML_CONTENT_TYPE = 'text/html';
@@ -34,9 +38,9 @@ abstract class Controller
     public $contentType = '';
 
     /**
-     * @var Identity
+     * @var IdentityHeader
      */
-    public $identity;
+    public $identityHeader;
 
     /**
      * @param Request $request
@@ -51,7 +55,8 @@ abstract class Controller
         $this->addCacheHeader($cacheSeconds);
 
         $this->initializeContentType();
-        $this->initializeIdentity();
+
+        $this->initializeIdentityHeader();
     }
 
     /**
@@ -99,23 +104,29 @@ abstract class Controller
      */
     public function setContentType($contentType)
     {
+        if ($contentType) {
+            $this->setResponse(
+                $this->getResponse()->withHeader(self::CONTENT_TYPE_HEADER, $contentType)
+            );
+        }
+
         $this->contentType = $contentType;
     }
 
     /**
-     * @return Identity
+     * @return IdentityHeader
      */
-    public function getIdentity()
+    public function getIdentityHeader()
     {
-        return $this->identity;
+        return $this->identityHeader;
     }
 
     /**
-     * @param Identity $identity
+     * @param IdentityHeader $identityHeader
      */
-    public function setIdentity(Identity $identity)
+    public function setIdentityHeader(IdentityHeader $identityHeader)
     {
-        $this->identity = $identity;
+        $this->identityHeader = $identityHeader;
     }
 
     /**
@@ -124,28 +135,30 @@ abstract class Controller
      */
     public function determineContentType()
     {
-        $acceptedContentTypes = $this->getRequest()->getHeaderLine("Accept");
+        $acceptedContentTypes = $this->getRequest()->getHeaderLine(self::ACCEPT_HEADER);
 
         if (strpos($acceptedContentTypes, self::HTML_CONTENT_TYPE) !== false) {
-            return "text/html";
+            return self::HTML_CONTENT_TYPE;
         }
 
         if (strpos($acceptedContentTypes, self::TEXT_CONTENT_TYPE) !== false) {
-            return "text/plain";
+            return self::TEXT_CONTENT_TYPE;
         }
 
         if (strpos($acceptedContentTypes, self::JSON_CONTENT_TYPE) !== false) {
-            return "application/json";
+            return self::JSON_CONTENT_TYPE;
         }
 
-        return "application/json";
+        return self::JSON_CONTENT_TYPE;
     }
 
     public function initializeContentType()
     {
         $this->setContentType($this->determineContentType());
 
-        $this->setResponse($this->getResponse()->withHeader("Content-Type", $this->getContentType()));
+        $this->setResponse(
+            $this->getResponse()->withHeader(self::CONTENT_TYPE_HEADER, $this->getContentType())
+        );
     }
 
     /**
@@ -166,17 +179,19 @@ abstract class Controller
     /**
      * @return bool
      */
-    public function initializeIdentity()
+    public function initializeIdentityHeader()
     {
         if ($this->getRequest()->hasHeader(Config::get('IDENTITY_HEADER'))) {
-            $this->setIdentity(new Identity(
+            $this->setIdentityHeader(new IdentityHeader(
                 $this->getRequest()->getHeaderLine(Config::get('IDENTITY_HEADER'))
             ));
+
             return true;
         }
 
-        $this->setIdentity(new Identity());
-        return true;
+        $this->setIdentityHeader(new IdentityHeader());
+
+        return false;
     }
 
 
@@ -291,7 +306,6 @@ abstract class Controller
         return $this->getResponse()->withJson($response);
     }
 
-
     /**
      * @param int $numberSeconds
      *
@@ -310,13 +324,25 @@ abstract class Controller
             return true;
         }
 
-//        $this->setResponse(
-//            $this->getResponse()->withHeader(
-//                "Cache-Control",
-//                "no-cache, must-revalidate"
-//            )
-//        );
-
         return true;
+    }
+
+    /**
+     * @param string $patronId
+     *
+     * @return bool
+     * @throws APIException
+     */
+    public function checkAccess($patronId = '')
+    {
+        if (!$this->getIdentityHeader()->isExists()) {
+            return true;
+        }
+
+        if ($this->getIdentityHeader()->getSubject() == $patronId) {
+            return true;
+        }
+
+        throw new APIException('Insufficient access for endpoint', null, null, null, 403);
     }
 }
