@@ -67,11 +67,11 @@ class Item extends BaseItem implements MessageInterface, ReadInterface, DeleteIn
                     ["name" => "itemType", "type" => ["string", "null"]],
                     ["name" => "fixedFields" , "type" => [
                         "null",
-                        ["type" => "array", "items" => [
+                        ["type" => "map", "values" => [
                             ["name" => "fixedField", "type" => "record", "fields" => [
                                 ["name" => "label", "type" => ["string", "null"]],
-                                ["name" => "value", "type" => ["string", "int", "boolean", "null"]],
-                                ["name" => "display", "type" => ["string", "int", "boolean", "null"]],
+                                ["name" => "value", "type" => ["string", "null"]],
+                                ["name" => "display", "type" => ["string", "null"]],
                             ]]
                         ]],
                     ]],

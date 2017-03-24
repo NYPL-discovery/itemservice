@@ -1056,73 +1056,6 @@
         ]
     },
     {
-        "name": "guzzlehttp/psr7",
-        "version": "1.4.1",
-        "version_normalized": "1.4.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/guzzle/psr7.git",
-            "reference": "0d6c7ca039329247e4f0f8f8f6506810e8248855"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/psr7/zipball/0d6c7ca039329247e4f0f8f8f6506810e8248855",
-            "reference": "0d6c7ca039329247e4f0f8f8f6506810e8248855",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.4.0",
-            "psr/http-message": "~1.0"
-        },
-        "provide": {
-            "psr/http-message-implementation": "1.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.0"
-        },
-        "time": "2017-02-27 10:51:17",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.4-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "GuzzleHttp\\Psr7\\": "src/"
-            },
-            "files": [
-                "src/functions_include.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Michael Dowling",
-                "email": "mtdowling@gmail.com",
-                "homepage": "https://github.com/mtdowling"
-            },
-            {
-                "name": "Tobias Schultze",
-                "homepage": "https://github.com/Tobion"
-            }
-        ],
-        "description": "PSR-7 message implementation that also provides common utility methods",
-        "keywords": [
-            "http",
-            "message",
-            "request",
-            "response",
-            "stream",
-            "uri",
-            "url"
-        ]
-    },
-    {
         "name": "doctrine/annotations",
         "version": "v1.4.0",
         "version_normalized": "1.4.0.0",
@@ -1194,22 +1127,22 @@
     },
     {
         "name": "guzzlehttp/guzzle",
-        "version": "6.2.2",
-        "version_normalized": "6.2.2.0",
+        "version": "6.2.3",
+        "version_normalized": "6.2.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/guzzle/guzzle.git",
-            "reference": "ebf29dee597f02f09f4d5bbecc68230ea9b08f60"
+            "reference": "8d6c6cc55186db87b7dc5009827429ba4e9dc006"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ebf29dee597f02f09f4d5bbecc68230ea9b08f60",
-            "reference": "ebf29dee597f02f09f4d5bbecc68230ea9b08f60",
+            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/8d6c6cc55186db87b7dc5009827429ba4e9dc006",
+            "reference": "8d6c6cc55186db87b7dc5009827429ba4e9dc006",
             "shasum": ""
         },
         "require": {
             "guzzlehttp/promises": "^1.0",
-            "guzzlehttp/psr7": "^1.3.1",
+            "guzzlehttp/psr7": "^1.4",
             "php": ">=5.5"
         },
         "require-dev": {
@@ -1217,7 +1150,7 @@
             "phpunit/phpunit": "^4.0",
             "psr/log": "^1.0"
         },
-        "time": "2016-10-08 15:01:37",
+        "time": "2017-02-28 22:50:30",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1258,8 +1191,8 @@
     },
     {
         "name": "symfony/finder",
-        "version": "v3.2.5",
-        "version_normalized": "3.2.5.0",
+        "version": "v3.2.6",
+        "version_normalized": "3.2.6.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/finder.git",
@@ -1308,25 +1241,92 @@
         "homepage": "https://symfony.com"
     },
     {
-        "name": "nypl/microservice-starter",
-        "version": "0.1.32",
-        "version_normalized": "0.1.32.0",
+        "name": "guzzlehttp/psr7",
+        "version": "1.4.2",
+        "version_normalized": "1.4.2.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/NYPL/php-microservice-starter.git",
-            "reference": "be5eec953e0211c48dcf481f2793b1b09759a6ef"
+            "url": "https://github.com/guzzle/psr7.git",
+            "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/NYPL/php-microservice-starter/zipball/be5eec953e0211c48dcf481f2793b1b09759a6ef",
-            "reference": "be5eec953e0211c48dcf481f2793b1b09759a6ef",
+            "url": "https://api.github.com/repos/guzzle/psr7/zipball/f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+            "reference": "f5b8a8512e2b58b0071a7280e39f14f72e05d87c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0",
+            "psr/http-message": "~1.0"
+        },
+        "provide": {
+            "psr/http-message-implementation": "1.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0"
+        },
+        "time": "2017-03-20 17:10:46",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "GuzzleHttp\\Psr7\\": "src/"
+            },
+            "files": [
+                "src/functions_include.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael Dowling",
+                "email": "mtdowling@gmail.com",
+                "homepage": "https://github.com/mtdowling"
+            },
+            {
+                "name": "Tobias Schultze",
+                "homepage": "https://github.com/Tobion"
+            }
+        ],
+        "description": "PSR-7 message implementation that also provides common utility methods",
+        "keywords": [
+            "http",
+            "message",
+            "request",
+            "response",
+            "stream",
+            "uri",
+            "url"
+        ]
+    },
+    {
+        "name": "nypl/microservice-starter",
+        "version": "0.1.39",
+        "version_normalized": "0.1.39.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/NYPL/php-microservice-starter.git",
+            "reference": "50dea38c1e4ca25a47797e00308be976844ef326"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/NYPL/php-microservice-starter/zipball/50dea38c1e4ca25a47797e00308be976844ef326",
+            "reference": "50dea38c1e4ca25a47797e00308be976844ef326",
             "shasum": ""
         },
         "require": {
             "aws/aws-sdk-php": "3.9.4",
             "danielstjules/stringy": "2.3.2",
             "filp/whoops": "2.1.3",
-            "guzzlehttp/guzzle": "6.2.2",
+            "guzzlehttp/guzzle": "6.2.3",
             "kwn/php-rdkafka-stubs": "0.0.5",
             "monolog/monolog": "1.21.0",
             "slim/pdo": "1.9.9",
@@ -1334,7 +1334,7 @@
             "vlucas/phpdotenv": "2.4.0",
             "zircote/swagger-php": "2.0.7"
         },
-        "time": "2017-03-09 20:58:16",
+        "time": "2017-03-24 21:51:58",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
