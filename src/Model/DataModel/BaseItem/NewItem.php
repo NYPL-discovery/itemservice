@@ -9,7 +9,7 @@ use NYPL\Services\Model\DataModel\BaseItem;
 class NewItem extends BaseItem
 {
     /**
-     * @SWG\Property(example="nypl-sierra")
+     * @SWG\Property(example="sierra-nypl")
      * @var string
      */
     public $nyplSource;
