@@ -1,0 +1,158 @@
+{
+  "name": "Item",
+  "type": "record",
+  "fields": [{
+    "name": "id",
+    "type": "string"
+  }, {
+    "name": "nyplSource",
+    "type": ["null", "string"],
+    "default": null
+  }, {
+    "name": "nyplType",
+    "type": ["null", "string"],
+    "default": null
+  }, {
+    "name": "updatedDate",
+    "type": ["null", "string"],
+    "default": null
+  }, {
+    "name": "createdDate",
+    "type": ["null", "string"],
+    "default": null
+  }, {
+    "name": "deletedDate",
+    "type": ["null", "string"],
+    "default": null
+  }, {
+    "name": "deleted",
+    "type": ["boolean", "null"]
+  }, {
+    "name": "bibIds",
+    "type": ["null", {
+      "type": "array",
+      "items": "string"
+    }],
+    "default": null
+  }, {
+    "name": "location",
+    "type": ["null", {
+      "name": "location",
+      "type": "record",
+      "fields": [{
+        "name": "code",
+        "type": ["null", "string"],
+        "default": null
+      }, {
+        "name": "name",
+        "type": ["null", "string"],
+        "default": null
+      }]
+    }],
+    "default": null
+  }, {
+    "name": "status",
+    "type": ["null", {
+      "name": "status",
+      "type": "record",
+      "fields": [{
+        "name": "code",
+        "type": ["null", "string"],
+        "default": null
+      }, {
+        "name": "display",
+        "type": ["null", "string"],
+        "default": null
+      }, {
+        "name": "dueDate",
+        "type": ["null", "string"],
+        "default": null
+      }]
+    }],
+    "default": null
+  }, {
+    "name": "barcode",
+    "type": ["null", "string"],
+    "default": null
+  }, {
+    "name": "callNumber",
+    "type": ["null", "string"],
+    "default": null
+  }, {
+    "name": "itemType",
+    "type": ["null", "string"],
+    "default": null
+  }, {
+    "name": "fixedFields",
+    "type": ["null", {
+      "type": "map",
+      "values": [{
+        "name": "fixedField",
+        "type": "record",
+        "fields": [{
+          "name": "label",
+          "type": ["null", "string"],
+          "default": null
+        }, {
+          "name": "value",
+          "type": ["null", "string", "int", "boolean"],
+          "default": null
+        }, {
+          "name": "display",
+          "type": ["null", "string"],
+          "default": null
+        }]
+      }]
+    }],
+    "default": null
+  }, {
+    "name": "varFields",
+    "type": ["null", {
+      "type": "array",
+      "items": [{
+        "name": "varField",
+        "type": "record",
+        "fields": [{
+          "name": "fieldTag",
+          "type": ["null", "string"],
+          "default": null
+        }, {
+          "name": "marcTag",
+          "type": ["null", "string"],
+          "default": null
+        }, {
+          "name": "ind1",
+          "type": ["null", "string"],
+          "default": null
+        }, {
+          "name": "ind2",
+          "type": ["null", "string"],
+          "default": null
+        }, {
+          "name": "content",
+          "type": ["null", "string"],
+          "default": null
+        }, {
+          "name": "subFields",
+          "type": ["null", {
+            "type": "array",
+            "items": [{
+              "name": "subField",
+              "type": "record",
+              "fields": [{
+                "name": "tag",
+                "type": ["null", "string"]
+              }, {
+                "name": "content",
+                "type": ["null", "string"],
+                "default": null
+              }]
+            }]
+          }],
+          "default": null
+        }]
+      }]
+    }],
+    "default": null
+  }]
+}

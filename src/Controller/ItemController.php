@@ -2,6 +2,7 @@
 namespace NYPL\Services\Controller;
 
 use NYPL\Services\Model\Response\BulkResponse\BulkItemsResponse;
+use NYPL\Starter\APILogger;
 use NYPL\Starter\Controller;
 use NYPL\Starter\Filter;
 use NYPL\Services\Model\DataModel\BaseItem\Item;
