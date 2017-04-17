@@ -10,5 +10,10 @@
     "psr-4": {
       "NYPL\\Services\\": [ "src/" ]
     }
+  },
+  "scripts": {
+    "post-update-cmd": [
+      "php -r \"copy('vendor/nypl/microservice-starter/scripts/index.js', 'index.js');\""
+    ]
   }
 }
