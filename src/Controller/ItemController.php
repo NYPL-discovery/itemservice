@@ -2,7 +2,6 @@
 namespace NYPL\Services\Controller;
 
 use NYPL\Services\Model\Response\BulkResponse\BulkItemsResponse;
-use NYPL\Starter\APILogger;
 use NYPL\Starter\Controller;
 use NYPL\Starter\Filter;
 use NYPL\Services\Model\DataModel\BaseItem\Item;
@@ -16,7 +15,7 @@ final class ItemController extends Controller
     /**
      * @SWG\Post(
      *     path="/v0.1/items",
-     *     summary="Create a new Item",
+     *     summary="Create new Items",
      *     tags={"items"},
      *     operationId="createItem",
      *     consumes={"application/json"},
@@ -26,12 +25,15 @@ final class ItemController extends Controller
      *         in="body",
      *         description="",
      *         required=true,
-     *         @SWG\Schema(ref="#/definitions/NewItem"),
+     *         @SWG\Schema(
+     *             type="array",
+     *             @SWG\Items(ref="#/definitions/NewItem")
+     *         )
      *     ),
      *     @SWG\Response(
      *         response=200,
      *         description="Successful operation",
-     *         @SWG\Schema(ref="#/definitions/ItemResponse")
+     *         @SWG\Schema(ref="#/definitions/BulkItemsResponse")
      *     ),
      *     @SWG\Response(
      *         response="404",
