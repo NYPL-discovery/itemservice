@@ -2,6 +2,7 @@
 namespace NYPL\Services\Controller;
 
 use NYPL\Services\Model\Response\BulkResponse\BulkItemsResponse;
+use NYPL\Starter\BulkModels;
 use NYPL\Starter\Controller;
 use NYPL\Starter\Filter;
 use NYPL\Services\Model\DataModel\BaseItem\Item;
@@ -54,32 +55,27 @@ final class ItemController extends Controller
      */
     public function createItem($nyplSource = "", $id = "")
     {
-        $models = [];
-        $errors = [];
+        $bulkModels = new BulkModels();
 
-        foreach ($this->getRequest()->getParsedBody() as $count => $bibData) {
-            try {
-                $item = new Item($bibData);
-
-                if ($nyplSource && $id) {
-                    $item->setNyplSource($nyplSource);
-                    $item->setId($id);
-                }
-
-                $item->create(true);
-
-                $models[] = $item;
-            } catch (\Exception $exception) {
-                $errors[] = new BulkError(
-                    $count,
-                    $exception->getMessage(),
-                    $bibData
-                );
+        foreach ($this->getRequest()->getParsedBody() as $itemData) {
+            if (!isset($itemData['nyplSource'])) {
+                $itemData['nyplSource'] = 'sierra-nypl';
             }
+
+            if (!isset($itemData['nyplType'])) {
+                $itemData['nyplType'] = 'item';
+            }
+
+            $bulkModels->addModel(new Item($itemData));
         }
 
+        $bulkModels->create(true);
+
         return $this->getResponse()->withJson(
-            new BulkItemsResponse($models, $errors)
+            new BulkItemsResponse(
+                $bulkModels->getSuccessModels(),
+                $bulkModels->getBulkErrors()
+            )
         );
     }
 
