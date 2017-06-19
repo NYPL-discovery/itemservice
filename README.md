@@ -1,7 +1,7 @@
 # NYPL Item Service
 
-[![Build Status](https://travis-ci.org/NYPL-discovery/bibservice.svg?branch=master)](https://travis-ci.org/NYPL-discovery/bibservice)
-[![Coverage Status](https://coveralls.io/repos/github/NYPL-discovery/bibservice/badge.svg?branch=travis)](https://coveralls.io/github/NYPL-discovery/bibservice?branch=travis)
+[![Build Status](https://travis-ci.org/NYPL-discovery/itemservice.svg?branch=master)](https://travis-ci.org/NYPL-discovery/itemservice)
+[![Coverage Status](https://coveralls.io/repos/github/NYPL-discovery/itemservice/badge.svg?branch=travis)](https://coveralls.io/github/NYPL-discovery/itemservice?branch=travis)
 
 This package is intended to be used as a Lambda-based Node.js/PHP Item Service using the 
 [NYPL PHP Microservice Starter](https://github.com/NYPL/php-microservice-starter).
