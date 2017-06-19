@@ -142,16 +142,23 @@ final class ItemController extends Controller
      */
     public function getItems($nyplSource = '', $id = '')
     {
-        $items = new ModelSet(new Item());
-
         if ($nyplSource && $id) {
+            $items = new ModelSet(new Item());
+
             $items->addFilter(new Filter('nyplSource', $nyplSource));
             $items->addFilter(new Filter('bibIds', $id, true));
+
+            return $this->getDefaultReadResponse(
+                $items,
+                new ItemsResponse()
+            );
         }
 
         return $this->getDefaultReadResponse(
-            $items,
-            new ItemsResponse()
+            new ModelSet(new Item()),
+            new ItemsResponse(),
+            null,
+            ['barcode', 'nyplSource', 'id']
         );
     }
 

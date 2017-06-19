@@ -124,9 +124,11 @@ trait DBReadTrait
         }
 
         if ($filter->isJsonColumn()) {
-            $sqlStatement->whereLike(
-                $this->translateDbName($filter->getFilterColumn()),
-                '%"' . $filter->getFilterValue() . '"%'
+            // See: https://dba.stackexchange.com/questions/90002/postgresql-operator-uses-index-but-underlying-function-does-not
+            $sqlStatement->where(
+                'jsonb_contains(' . $this->translateDbName($filter->getFilterColumn()) . ', \'' . $filter->getFilterValue() . '\')',
+                '=',
+                'true'
             );
 
             return true;
@@ -135,6 +137,28 @@ trait DBReadTrait
         if ($filter->getFilterValue() === null) {
             $sqlStatement->whereNull(
                 $this->translateDbName($filter->getFilterColumn())
+            );
+
+            return true;
+        }
+
+        $this->applyWhere($filter, $sqlStatement);
+
+        return true;
+    }
+
+    /**
+     * @param Filter $filter
+     * @param StatementContainer $sqlStatement
+     *
+     * @return bool
+     */
+    protected function applyWhere(Filter $filter, StatementContainer $sqlStatement)
+    {
+        if (strpos($filter->getFilterValue(), ',') !== false) {
+            $sqlStatement->whereIn(
+                $this->translateDbName($filter->getFilterColumn()),
+                explode(',', $filter->getFilterValue())
             );
 
             return true;

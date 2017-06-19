@@ -20,6 +20,8 @@ class AwsException extends \RuntimeException
     private $errorType;
     private $errorCode;
     private $connectionError;
+    private $transferInfo;
+    private $errorMessage;
 
     /**
      * @param string           $message Exception message
@@ -43,6 +45,12 @@ class AwsException extends \RuntimeException
         $this->errorCode = isset($context['code']) ? $context['code'] : null;
         $this->connectionError = !empty($context['connection_error']);
         $this->result = isset($context['result']) ? $context['result'] : null;
+        $this->transferInfo = isset($context['transfer_stats'])
+            ? $context['transfer_stats']
+            : [];
+        $this->errorMessage = isset($context['message'])
+            ? $context['message']
+            : null;
         parent::__construct($message, 0, $previous);
     }
 
@@ -74,6 +82,16 @@ class AwsException extends \RuntimeException
     public function getCommand()
     {
         return $this->command;
+    }
+
+    /**
+     * Get the concise error message if any.
+     *
+     * @return string|null
+     */
+    public function getAwsErrorMessage()
+    {
+        return $this->errorMessage;
     }
 
     /**
@@ -156,5 +174,35 @@ class AwsException extends \RuntimeException
     public function getAwsErrorCode()
     {
         return $this->errorCode;
+    }
+
+    /**
+     * Get all transfer information as an associative array if no $name
+     * argument is supplied, or gets a specific transfer statistic if
+     * a $name attribute is supplied (e.g., 'retries_attempted').
+     *
+     * @param string $name Name of the transfer stat to retrieve
+     *
+     * @return mixed|null|array
+     */
+    public function getTransferInfo($name = null)
+    {
+        if (!$name) {
+            return $this->transferInfo;
+        }
+
+        return isset($this->transferInfo[$name])
+            ? $this->transferInfo[$name]
+            : null;
+    }
+
+    /**
+     * Replace the transfer information associated with an exception.
+     *
+     * @param array $info
+     */
+    public function setTransferInfo(array $info)
+    {
+        $this->transferInfo = $info;
     }
 }

@@ -18,7 +18,7 @@ class Item extends BaseItem implements MessageInterface, ReadInterface, DeleteIn
     use DBCreateTrait, DBReadTrait, DBDeleteTrait, DBUpdateTrait;
 
     /**
-     * @SWG\Property(example="nypl-sierra")
+     * @SWG\Property(example="sierra-nypl")
      * @var string
      */
     public $nyplSource;

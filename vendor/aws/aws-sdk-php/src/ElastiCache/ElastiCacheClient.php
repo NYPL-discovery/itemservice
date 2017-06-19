@@ -60,6 +60,8 @@ use Aws\AwsClient;
  * @method \GuzzleHttp\Promise\Promise describeReservedCacheNodesOfferingsAsync(array $args = [])
  * @method \Aws\Result describeSnapshots(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeSnapshotsAsync(array $args = [])
+ * @method \Aws\Result listAllowedNodeTypeModifications(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise listAllowedNodeTypeModificationsAsync(array $args = [])
  * @method \Aws\Result listTagsForResource(array $args = [])
  * @method \GuzzleHttp\Promise\Promise listTagsForResourceAsync(array $args = [])
  * @method \Aws\Result modifyCacheCluster(array $args = [])
@@ -80,5 +82,7 @@ use Aws\AwsClient;
  * @method \GuzzleHttp\Promise\Promise resetCacheParameterGroupAsync(array $args = [])
  * @method \Aws\Result revokeCacheSecurityGroupIngress(array $args = [])
  * @method \GuzzleHttp\Promise\Promise revokeCacheSecurityGroupIngressAsync(array $args = [])
+ * @method \Aws\Result testFailover(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise testFailoverAsync(array $args = [])
  */
 class ElastiCacheClient extends AwsClient {}

@@ -14,8 +14,14 @@ use Aws\AwsClient;
  * @method \GuzzleHttp\Promise\Promise decreaseStreamRetentionPeriodAsync(array $args = [])
  * @method \Aws\Result deleteStream(array $args = [])
  * @method \GuzzleHttp\Promise\Promise deleteStreamAsync(array $args = [])
+ * @method \Aws\Result describeLimits(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise describeLimitsAsync(array $args = [])
  * @method \Aws\Result describeStream(array $args = [])
  * @method \GuzzleHttp\Promise\Promise describeStreamAsync(array $args = [])
+ * @method \Aws\Result disableEnhancedMonitoring(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise disableEnhancedMonitoringAsync(array $args = [])
+ * @method \Aws\Result enableEnhancedMonitoring(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise enableEnhancedMonitoringAsync(array $args = [])
  * @method \Aws\Result getRecords(array $args = [])
  * @method \GuzzleHttp\Promise\Promise getRecordsAsync(array $args = [])
  * @method \Aws\Result getShardIterator(array $args = [])
@@ -36,5 +42,7 @@ use Aws\AwsClient;
  * @method \GuzzleHttp\Promise\Promise removeTagsFromStreamAsync(array $args = [])
  * @method \Aws\Result splitShard(array $args = [])
  * @method \GuzzleHttp\Promise\Promise splitShardAsync(array $args = [])
+ * @method \Aws\Result updateShardCount(array $args = [])
+ * @method \GuzzleHttp\Promise\Promise updateShardCountAsync(array $args = [])
  */
 class KinesisClient extends AwsClient {}

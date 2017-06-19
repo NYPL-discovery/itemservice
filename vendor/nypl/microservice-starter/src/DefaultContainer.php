@@ -74,8 +74,6 @@ class DefaultContainer extends Container
 
         $this["settings"]["displayErrorDetails"] = false;
 
-        $this["settings"]["displayErrorDetails"] = false;
-
         $this["notFoundHandler"] = function (Container $container) {
             return function (Request $request, Response $response) use ($container) {
                 return $container["response"]
@@ -92,20 +90,6 @@ class DefaultContainer extends Container
                 return $container["response"]
                     ->withStatus($this->getStatusCode($exception))
                     ->withJson($this->getErrorResponse($exception))
-                    ->withHeader(
-                        "Access-Control-Allow-Origin",
-                        "*"
-                    );
-            };
-        };
-
-        $this["phpErrorHandler"] = function (Container $container) {
-            return function (Request $request, Response $response, \Throwable $throwable) use ($container) {
-                $this->logError($request, $throwable);
-
-                return $container["response"]
-                    ->withStatus(self::DEFAULT_ERROR_STATUS_CODE)
-                    ->withJson($this->getErrorResponse($throwable))
                     ->withHeader(
                         "Access-Control-Allow-Origin",
                         "*"

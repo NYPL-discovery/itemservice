@@ -1,10 +1,12 @@
-  {
+{
   "name": "itemService",
   "version": "0.1.0",
-  "description": "Lambda for a NYPL Service",
+  "description": "Lambda for the NYPL Item Service",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy-qa": "node-lambda deploy -e qa -f config/var_qa.env -S config/event_sources_qa.json -b subnet-f4fe56af -g sg-1d544067",
+    "deploy-production": "node-lambda deploy -e production -f config/var_production.env -S config/event_sources_production.json -b subnet-f4fe56af -g sg-1d544067",
+    "test-items": "node-lambda run -j tests/events/items.json -x tests/events/context.json"
   },
   "repository": {
   },
@@ -14,10 +16,5 @@
     "http-string-parser": "^0.0.5"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-aws": "^0.6.1",
-    "grunt-aws-lambda": "^0.11.0",
-    "grunt-env": "^0.4.4",
-    "load-grunt-tasks": "^3.4.0"
   }
 }

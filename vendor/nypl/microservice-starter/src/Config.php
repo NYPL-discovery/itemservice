@@ -3,30 +3,20 @@ namespace NYPL\Starter;
 
 use Aws\Kms\KmsClient;
 use Dotenv\Dotenv;
-use Dotenv\Exception\InvalidPathException;
 
 class Config
 {
-    const PUBLIC_CONFIG_FILE = '.public';
-    const PRIVATE_CONFIG_FILE = '.private';
+    const ENVIRONMENT_FILE = '.env';
+    const CONFIG_FILE = 'var_app';
 
     protected static $initialized = false;
 
     protected static $configDirectory = '';
 
-    protected static $publicRequired =
+    protected static $required =
         [
-            'TIME_ZONE', 'DB_CONNECT_STRING', 'SLACK_CHANNEL', 'SLACK_USERNAME', 'AWS_DEFAULT_REGION'
+            'SLACK_TOKEN', 'AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY', 'TIME_ZONE'
         ];
-
-    protected static $privateRequired =
-        [
-            'SLACK_TOKEN', 'AWS_ACCESS_KEY_ID', 'AWS_SECRET_ACCESS_KEY'
-        ];
-
-    protected static $environmentName = 'ENVIRONMENT';
-
-    protected static $localEnvironmentValue = 'local';
 
     protected static $addedRequired = [];
 
@@ -78,15 +68,16 @@ class Config
     }
 
     /**
+     * @throws APIException
      * @return bool
      */
     protected static function isEncryptedEnvironment()
     {
-        if (self::get(self::$environmentName) == self::$localEnvironmentValue) {
-            return false;
+        if (Config::get('LAMBDA_TASK_ROOT')) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     /**
@@ -103,18 +94,15 @@ class Config
 
     protected static function loadConfiguration()
     {
-        try {
-            $dotEnv = new Dotenv(self::getConfigDirectory(), self::PRIVATE_CONFIG_FILE);
-            $dotEnv->load();
-        } catch (InvalidPathException $exception) {
-        }
-
-        $dotEnv->required(self::getPrivateRequired());
-
-        $dotEnv = new Dotenv(self::getConfigDirectory(), self::PUBLIC_CONFIG_FILE);
+        $dotEnv = new Dotenv(self::getConfigDirectory(), self::ENVIRONMENT_FILE);
         $dotEnv->load();
 
-        $dotEnv->required(self::getPublicRequired());
+        if (file_exists(self::getConfigDirectory() . '/config/' . self::CONFIG_FILE)) {
+            $dotEnv = new Dotenv(self::getConfigDirectory() . '/config', self::CONFIG_FILE);
+            $dotEnv->load();
+        }
+
+        $dotEnv->required(self::getRequired());
 
         $dotEnv->required(self::getAddedRequired());
 
@@ -124,7 +112,7 @@ class Config
     /**
      * @return bool
      */
-    protected static function isInitialized()
+    public static function isInitialized()
     {
         return self::$initialized;
     }
@@ -148,7 +136,7 @@ class Config
     /**
      * @param string $configDirectory
      */
-    protected static function setConfigDirectory(string $configDirectory)
+    protected static function setConfigDirectory($configDirectory = '')
     {
         self::$configDirectory = $configDirectory;
     }
@@ -172,20 +160,14 @@ class Config
     /**
      * @return array
      */
-    public static function getPublicRequired()
+    public static function getRequired()
     {
-        return self::$publicRequired;
+        return self::$required;
     }
 
-    /**
-     * @return array
-     */
-    public static function getPrivateRequired(): array
-    {
-        return self::$privateRequired;
-    }
 
     /**
+     * @throws \InvalidArgumentException|APIException
      * @return KmsClient
      */
     protected static function createKeyClient()

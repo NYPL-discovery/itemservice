@@ -1,38 +1,96 @@
 # NYPL Item Service
 
-This package is intended to be used as a Lambda-based Item Service using the [NYPL PHP Microservice Starter](https://github.com/NYPL/php-microservice-starter).
+[![Build Status](https://travis-ci.org/NYPL-discovery/bibservice.svg?branch=master)](https://travis-ci.org/NYPL-discovery/bibservice)
+[![Coverage Status](https://coveralls.io/repos/github/NYPL-discovery/bibservice/badge.svg?branch=travis)](https://coveralls.io/github/NYPL-discovery/bibservice?branch=travis)
 
-This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/), and [PSR-4](http://www.php-fig.org/psr/psr-4/) (using the [Composer](https://getcomposer.org/) autoloader).
+This package is intended to be used as a Lambda-based Node.js/PHP Item Service using the 
+[NYPL PHP Microservice Starter](https://github.com/NYPL/php-microservice-starter).
 
-## Installation
-
-* Initialize the `Config` class.
+This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/), 
+[PSR-2](http://www.php-fig.org/psr/psr-2/), and [PSR-4](http://www.php-fig.org/psr/psr-4/) 
+(using the [Composer](https://getcomposer.org/) autoloader).
 
 ## Requirements
 
-* PHP >=7.0
+* Node.js >=6.0
+* PHP >=7.0 
+  * [pdo_pdgsql](http://php.net/manual/en/ref.pdo-pgsql.php)
 
-## Features
+Homebrew is highly recommended for PHP:
+  * `brew install php71`
+  * `brew install php71-pdo-pgsql`
+  
+
+## Installation
+
+1. Clone the repo.
+2. Install required dependencies.
+   * Run `npm install` to install Node.js packages.
+   * Run `composer install` to install PHP packages.
+   * If you have not already installed `node-lambda` as a global package, run `npm install -g node-lambda`.
+3. Setup [configuration files](#configuration).
+   * Copy the `.env.sample` file to `.env`.
+   * Copy `config/var_env.sample` to `config/var_dev.env`.
+4. Replace sample values in `.env` and `config/var_dev.env`.
+
+## Configuration
+
+Various files are used to configure and deploy the Lambda.
+
+### .env
+
+`.env` is used *locally* for two purposes:
+
+1. By `node-lambda` for deploying to and configuring Lambda in *all* environments. 
+   * You should use this file to configure the common settings for the Lambda 
+   (e.g. timeout, role, etc.) and include AWS credentials to deploy the Lambda. 
+2. To set local environment variables so the Lambda can be run and tested in a local environment.
+   These parameters are ultimately set by the [var environment files](#var_environment) when the Lambda is deployed.
+
+### package.json
+
+Configures `npm run` commands for each environment for deployment and testing. Deployment commands may also set
+the proper AWS Lambda VPC and security group.
+ 
+~~~~
+"scripts": {
+  "deploy-qa": "node-lambda deploy -e qa -f config/deploy_qa.env -S config/event_sources_qa.json -b subnet-f4fe56af -g sg-1d544067",
+  "deploy-production": "node-lambda deploy -e production -f config/deploy_production.env -S config/event_sources_production.json -b subnet-f4fe56af -g sg-1d544067",
+  "test-items": "node-lambda run -j tests/events/items.json -x tests/events/context.json"
+},
+~~~~
+
+### config/var_app
+
+Configures environment variables common to *all* environments.
+
+### config/var_*environment*.env
+
+Configures environment variables specific to each environment.
+
+### config/event_sources_*environment*
+
+Configures Lambda event sources (triggers) specific to each environment.
 
 ## Usage
 
-#### Basic Example
+### Process a Lambda Event
 
-Create an `index.php` with a `Service` object and your [Slim](http://www.slimframework.com/) routes:
+To use `node-lambda` to process the sample API Gateway event in `event.json`, run:
 
 ~~~~
-Config::initialize(__DIR__ . '/config');
-
-$service = new NYPL\Starter\Service();
-
-$service->get("/v0.1/items", function (Request $request, Response $response) {
-    $controller = new Controller\ItemController($request, $response);
-    return $controller->getItems();
-});
+npm run test-items
 ~~~~
 
-Configure your web server to load `index.php` on all requests.
-See the `samples/service-config` directory for sample configuration files for an Apache `.htaccess` or Nginx `nginx.conf` installation.
+### Run as a Web Server
+
+To use the PHP internal web server, run:
+
+~~~~
+php -S localhost:8888 -t . index.php
+~~~~
+
+You can then make a request to the Lambda: `http://localhost:8888/api/v0.1/items`.
 
 ### Swagger Documentation Generator
 
@@ -42,4 +100,26 @@ Create a Swagger route to generate Swagger specification documentation:
 $service->get("/swagger", function (Request $request, Response $response) {
     return SwaggerGenerator::generate(__DIR__ . "/src", $response);
 });
+~~~~
+
+## Deployment
+
+Before deploying, ensure [configuration files](#configuration) have been properly set up:
+
+1. Copy `config/var_env.sample` and `config/var_env.sample` to `config/var_qa.env` and `config/var_production.env`, respectively.
+   *  Verify environment variables are correct.
+1. Verify `.env` has correct settings for deployment.
+2. Verify `package.json` has correct command-line options for security group and VPC (if applicable).
+4. Verify `config/event_sources_qa.json` and `config/event_sources_production.json` have proper event sources.
+
+To deploy to an environment, run the corresponding command:
+
+~~~~
+npm run deploy-qa
+~~~~
+
+or 
+
+~~~~
+npm run deploy-production
 ~~~~
