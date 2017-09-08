@@ -14,9 +14,9 @@ try {
 
     $service = new Service();
 
-    $service->get("/swagger", function (Request $request, Response $response) {
+    $service->get("/docs/item", function (Request $request, Response $response) {
         return SwaggerGenerator::generate(
-            [__DIR__ . "/src"],
+            [__DIR__ . "/src", __DIR__ . "/vendor/nypl/microservice-starter/src"],
             $response
         );
     });
@@ -36,20 +36,27 @@ try {
         return $controller->getItem($parameters["nyplSource"], $parameters["id"]);
     });
 
-
     $service->get(
         "/api/v0.1/bibs/{nyplSource}/{id}/items",
         function (Request $request, Response $response, $parameters) {
-            $controller = new Controller\ItemController($request, $response);
-            return $controller->getItems($parameters["nyplSource"], $parameters["id"]);
+            $controller = new Controller\BibController($request, $response);
+            return $controller->getBibItems($parameters["nyplSource"], $parameters["id"]);
         }
     );
 
     $service->post(
         "/api/v0.1/bibs/{nyplSource}/{id}/items",
         function (Request $request, Response $response, $parameters) {
+            $controller = new Controller\BibController($request, $response);
+            return $controller->createBibItem($parameters["nyplSource"], $parameters["id"]);
+        }
+    );
+
+    $service->get(
+        "/api/v0.1/items/{nyplSource}/{id}/catalog-redirect",
+        function (Request $request, Response $response, $parameters) {
             $controller = new Controller\ItemController($request, $response);
-            return $controller->createItem($parameters["nyplSource"], $parameters["id"]);
+            return $controller->redirectToCatalog($parameters["nyplSource"], $parameters["id"]);
         }
     );
 

@@ -380,4 +380,13 @@ abstract class BaseItem extends DataModel
     {
         $this->nyplType = $nyplType;
     }
+
+    /**
+     * @param string $fieldType
+     * @param FixedField $fixedField
+     */
+    public function addFixedField($fieldType = '', FixedField $fixedField)
+    {
+        $this->fixedFields[(string) $fieldType] = $fixedField;
+    }
 }

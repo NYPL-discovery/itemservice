@@ -28,7 +28,7 @@ class ItemStatus extends Model
      * @SWG\Property(example="2008-12-24T03:16:00Z", type="string")
      * @var Model\LocalDateTime
      */
-    public $dueDate;
+    public $duedate;
 
     /**
      * @return string
@@ -65,17 +65,17 @@ class ItemStatus extends Model
     /**
      * @return LocalDateTime
      */
-    public function getDueDate()
+    public function getDuedate()
     {
-        return $this->dueDate;
+        return $this->duedate;
     }
 
     /**
-     * @param LocalDateTime $dueDate
+     * @param LocalDateTime $duedate
      */
-    public function setDueDate($dueDate)
+    public function setDuedate($duedate)
     {
-        $this->dueDate = $dueDate;
+        $this->duedate = $duedate;
     }
 
     /**

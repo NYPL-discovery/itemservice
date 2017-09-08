@@ -45,7 +45,7 @@ class VarField extends Model
      * @SWG\Property()
      * @var SubField[]
      */
-    public $subFields;
+    public $subfields;
 
     /**
      * @return string
@@ -114,17 +114,17 @@ class VarField extends Model
     /**
      * @return SubField[]
      */
-    public function getSubFields()
+    public function getSubfields()
     {
-        return $this->subFields;
+        return $this->subfields;
     }
 
     /**
-     * @param SubField[] $subFields
+     * @param SubField[] $subfields
      */
-    public function setSubFields($subFields)
+    public function setSubfields($subfields)
     {
-        $this->subFields = $subFields;
+        $this->subfields = $subfields;
     }
 
     /**

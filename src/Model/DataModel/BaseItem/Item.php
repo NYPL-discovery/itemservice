@@ -2,6 +2,7 @@
 namespace NYPL\Services\Model\DataModel\BaseItem;
 
 use NYPL\Services\Model\DataModel\BaseItem;
+use NYPL\Starter\Config;
 use NYPL\Starter\Model\ModelInterface\DeleteInterface;
 use NYPL\Starter\Model\ModelInterface\MessageInterface;
 use NYPL\Starter\Model\ModelInterface\ReadInterface;
@@ -9,6 +10,7 @@ use NYPL\Starter\Model\ModelTrait\DBCreateTrait;
 use NYPL\Starter\Model\ModelTrait\DBDeleteTrait;
 use NYPL\Starter\Model\ModelTrait\DBReadTrait;
 use NYPL\Starter\Model\ModelTrait\DBUpdateTrait;
+use NYPL\Starter\SchemaClient;
 
 /**
  * @SWG\Definition(title="Item", type="object", required={"id"})
@@ -29,12 +31,14 @@ class Item extends BaseItem implements MessageInterface, ReadInterface, DeleteIn
      */
     public $bibIds;
 
+    public function getStreamName()
+    {
+        return Config::get('ITEM_STREAM_NAME');
+    }
+
     public function getSchema()
     {
-        return json_decode(
-            file_get_contents(__DIR__ . '/../../../../schemas/Item.json'),
-            true
-        );
+        return SchemaClient::getSchema('Item')->getSchema();
     }
 
     public function getIdFields()

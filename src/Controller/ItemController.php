@@ -1,14 +1,17 @@
 <?php
 namespace NYPL\Services\Controller;
 
+use NYPL\Services\Model\DataModel\FixedField;
+use NYPL\Services\Model\DataModel\ItemStatus;
 use NYPL\Services\Model\Response\BulkResponse\BulkItemsResponse;
+use NYPL\Starter\APIException;
 use NYPL\Starter\BulkModels;
+use NYPL\Starter\Config;
 use NYPL\Starter\Controller;
 use NYPL\Starter\Filter;
 use NYPL\Services\Model\DataModel\BaseItem\Item;
 use NYPL\Services\Model\Response\SuccessResponse\ItemResponse;
 use NYPL\Services\Model\Response\SuccessResponse\ItemsResponse;
-use NYPL\Starter\Model\BulkError;
 use NYPL\Starter\ModelSet;
 
 final class ItemController extends Controller
@@ -142,18 +145,6 @@ final class ItemController extends Controller
      */
     public function getItems($nyplSource = '', $id = '')
     {
-        if ($nyplSource && $id) {
-            $items = new ModelSet(new Item());
-
-            $items->addFilter(new Filter('nyplSource', $nyplSource));
-            $items->addFilter(new Filter('bibIds', $id, true));
-
-            return $this->getDefaultReadResponse(
-                $items,
-                new ItemsResponse()
-            );
-        }
-
         return $this->getDefaultReadResponse(
             new ModelSet(new Item()),
             new ItemsResponse(),
@@ -215,9 +206,55 @@ final class ItemController extends Controller
         $item->addFilter(new Filter('id', $id));
         $item->addFilter(new Filter('nyplSource', $nyplSource));
 
-        return $this->getDefaultReadResponse(
-            $item,
-            new ItemResponse()
+        $item->read();
+
+        // Overwriting status for SCSB calls
+        if ($this->getIdentityHeader()->getIdentity()['aud'] === 'htc_scsb') {
+            $status = new ItemStatus();
+            $status->setCode('t');
+            $status->setDisplay('IN TRANSIT');
+            $item->setStatus($status);
+
+            $statusField = new FixedField();
+            $statusField->setLabel('Status');
+            $statusField->setValue('t');
+            $statusField->setDisplay('IN TRANSIT');
+            $item->addFixedField(88, $statusField);
+        }
+
+        return $this->getResponse()->withJson(
+            new ItemResponse($item)
         );
+    }
+
+    /**
+     * @param string $nyplSource
+     * @param string $id
+     *
+     * @throws APIException
+     * @return \Slim\Http\Response
+     */
+    public function redirectToCatalog($nyplSource = '', $id = '')
+    {
+        $queryParams = http_build_query([
+            'fromUrl' => $this->getRequest()->getQueryParam('fromUrl')
+        ]);
+
+        try {
+            $item = new Item();
+
+            $item->addFilter(new Filter('id', $id));
+            $item->addFilter(new Filter('nyplSource', $nyplSource));
+
+            $item->read();
+
+            return $this->getResponse()->withRedirect(
+                Config::get('CATALOG_URL_PREFIX') . '/b' . $item->getBibIds()[0] . '-i' . $id . '?' . $queryParams
+            );
+        } catch (APIException $exception) {
+            return $this->getResponse()->withRedirect(
+                Config::get('CATALOG_URL_PREFIX') . '/b1-i' . $id . '?' . $queryParams
+            );
+        }
     }
 }

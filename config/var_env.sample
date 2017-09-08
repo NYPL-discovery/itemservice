@@ -1,3 +1,4 @@
+DB_CONNECT_STRING=
 DB_USERNAME=root
 # This parameters should be encrypted using KMS
 SLACK_TOKEN=ABC...
