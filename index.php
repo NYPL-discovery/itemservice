@@ -31,6 +31,11 @@ try {
         return $controller->getItems();
     });
 
+    $service->get("/api/v0.1/items-temp", function (Request $request, Response $response) {
+        $controller = new Controller\ItemController($request, $response);
+        return $controller->getItems();
+    });
+
     $service->get("/api/v0.1/items/{nyplSource}/{id}", function (Request $request, Response $response, $parameters) {
         $controller = new Controller\ItemController($request, $response);
         return $controller->getItem($parameters["nyplSource"], $parameters["id"]);

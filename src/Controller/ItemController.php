@@ -121,6 +121,18 @@ final class ItemController extends Controller
      *         required=false,
      *         type="string"
      *     ),
+     *     @SWG\Parameter(
+     *         name="bibId",
+     *         in="query",
+     *         required=false,
+     *         type="string"
+     *     ),
+     *     @SWG\Parameter(
+     *         name="limit",
+     *         in="query",
+     *         required=false,
+     *         type="string"
+     *     ),
      *     @SWG\Response(
      *         response=200,
      *         description="Successful operation",
@@ -143,8 +155,23 @@ final class ItemController extends Controller
      *     }
      * )
      */
-    public function getItems($nyplSource = '', $id = '')
+    public function getItems()
     {
+        if ($bidId = $this->getRequest()->getQueryParam('bibId')) {
+            $items = new ModelSet(new Item());
+
+            $items->addFilter(new Filter('bibIds', $bidId, true));
+
+            if ($nyplSource = $this->getRequest()->getQueryParam('nyplSource')) {
+                $items->addFilter(new Filter('nypl-source', $nyplSource));
+            }
+
+            return $this->getDefaultReadResponse(
+                $items,
+                new ItemsResponse()
+            );
+        }
+
         return $this->getDefaultReadResponse(
             new ModelSet(new Item()),
             new ItemsResponse(),
