@@ -27,11 +27,9 @@ Homebrew is highly recommended for PHP:
 2. Install required dependencies.
    * Run `npm install` to install Node.js packages.
    * Run `composer install` to install PHP packages.
-   * If you have not already installed `node-lambda` as a global package, run `npm install -g node-lambda`.
-3. Setup [configuration files](#configuration).
-   * Copy the `.env.sample` file to `.env`.
-   * Copy `config/var_env.sample` to `config/var_dev.env`.
-4. Replace sample values in `.env` and `config/var_dev.env`.
+3. Setup [local configuration file](#configuration).
+   * Copy the `config/development.env` file to `config/local.env`.
+4. Replace values in `config/local.env` with appropriate local, development configuration values.
 
 ## Configuration
 
@@ -39,38 +37,35 @@ Various files are used to configure and deploy the Lambda.
 
 ### .env
 
-`.env` is used *locally* for two purposes:
+`.env` is used by `node-lambda` for deploying to and configuring Lambda in *all* environments. 
 
-1. By `node-lambda` for deploying to and configuring Lambda in *all* environments. 
-   * You should use this file to configure the common settings for the Lambda 
-   (e.g. timeout, role, etc.) and include AWS credentials to deploy the Lambda. 
-2. To set local environment variables so the Lambda can be run and tested in a local environment.
-   These parameters are ultimately set by the [var environment files](#var_environment) when the Lambda is deployed.
+You should use this file to configure the common settings for the Lambda (e.g. timeout, Node version). 
 
 ### package.json
 
-Configures `npm run` commands for each environment for deployment and testing. Deployment commands may also set
-the proper AWS Lambda VPC and security group.
+Configures `npm run` commands for each environment for deployment and testing. Deployment commands may also set the proper AWS Lambda VPC, security group, and role.
  
 ~~~~
 "scripts": {
-  "deploy-qa": "node-lambda deploy -e qa -f config/deploy_qa.env -S config/event_sources_qa.json -b subnet-f4fe56af -g sg-1d544067",
-  "deploy-production": "node-lambda deploy -e production -f config/deploy_production.env -S config/event_sources_production.json -b subnet-f4fe56af -g sg-1d544067",
-  "test-items": "node-lambda run -j tests/events/items.json -x tests/events/context.json"
+    "deploy-development": ...
+    "deploy-qa": ...
+    "deploy-production": ...
 },
 ~~~~
 
-### config/var_app
+### config/global.env
 
-Configures environment variables common to *all* environments.
+Configures (non-secret) environment variables common to *all* environments.
 
-### config/var_*environment*.env
+### config/*environment*.env
 
 Configures environment variables specific to each environment.
 
-### config/event_sources_*environment*
+### config/event_sources_*environment*.json
 
 Configures Lambda event sources (triggers) specific to each environment.
+
+Secrets *MUST* be encrypted using KMS.
 
 ## Usage
 
@@ -79,7 +74,7 @@ Configures Lambda event sources (triggers) specific to each environment.
 To use `node-lambda` to process the sample API Gateway event in `event.json`, run:
 
 ~~~~
-npm run test-items
+npm run test-recap-item
 ~~~~
 
 ### Run as a Web Server
@@ -104,22 +99,11 @@ $service->get("/swagger", function (Request $request, Response $response) {
 
 ## Deployment
 
-Before deploying, ensure [configuration files](#configuration) have been properly set up:
+Travis CI is configured to run our build and deployment process on AWS.
 
-1. Copy `config/var_env.sample` and `config/var_env.sample` to `config/var_qa.env` and `config/var_production.env`, respectively.
-   *  Verify environment variables are correct.
-1. Verify `.env` has correct settings for deployment.
-2. Verify `package.json` has correct command-line options for security group and VPC (if applicable).
-4. Verify `config/event_sources_qa.json` and `config/event_sources_production.json` have proper event sources.
+Our Travis CI/CD pipeline will execute the following steps for each deployment trigger:
 
-To deploy to an environment, run the corresponding command:
-
-~~~~
-npm run deploy-qa
-~~~~
-
-or 
-
-~~~~
-npm run deploy-production
-~~~~
+* Run unit test coverage
+* Build Lambda deployment packages
+* Execute the `deploy` hook only for `development`, `qa` and `master` branches to adhere to our `node-lambda` deployment process
+* Developers _do not_ need to manually deploy the application unless an error occurred via Travis

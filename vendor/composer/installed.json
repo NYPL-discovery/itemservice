@@ -1217,17 +1217,17 @@
     },
     {
         "name": "nypl/microservice-starter",
-        "version": "1.1.42",
-        "version_normalized": "1.1.42.0",
+        "version": "1.2.1",
+        "version_normalized": "1.2.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/NYPL/php-microservice-starter.git",
-            "reference": "3f00c934b3f52f9c7a16591b034dfc1f3c6942ea"
+            "reference": "df4829cfdc87e8a216dc23cd94244a9cd609ae1c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/NYPL/php-microservice-starter/zipball/3f00c934b3f52f9c7a16591b034dfc1f3c6942ea",
-            "reference": "3f00c934b3f52f9c7a16591b034dfc1f3c6942ea",
+            "url": "https://api.github.com/repos/NYPL/php-microservice-starter/zipball/df4829cfdc87e8a216dc23cd94244a9cd609ae1c",
+            "reference": "df4829cfdc87e8a216dc23cd94244a9cd609ae1c",
             "shasum": ""
         },
         "require": {
@@ -1240,7 +1240,7 @@
             "vlucas/phpdotenv": "2.4.0",
             "zircote/swagger-php": "2.0.7"
         },
-        "time": "2018-02-07 18:48:44",
+        "time": "2018-02-09 17:26:34",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

@@ -17,7 +17,8 @@
   "scripts": {
     "post-update-cmd": [
       "php -r \"copy('vendor/nypl/microservice-starter/scripts/index.js', 'index.js');\"",
-      "php -r \"copy('vendor/nypl/microservice-starter/scripts/parser.js', 'parser.js');\""
+      "php -r \"copy('vendor/nypl/microservice-starter/scripts/parser.js', 'parser.js');\"",
+      "php -r \"copy('vendor/nypl/microservice-starter/scripts/post_install.sh', 'post_install.sh');\""
     ]
   }
 }
