@@ -51,7 +51,7 @@ final class ItemController extends Controller
      *     ),
      *     security={
      *         {
-     *             "api_auth": {"openid api"}
+     *             "api_auth": {"openid write:item"}
      *         }
      *     }
      * )
@@ -128,10 +128,18 @@ final class ItemController extends Controller
      *         type="string"
      *     ),
      *     @SWG\Parameter(
-     *         name="limit",
+     *         name="createdDate",
      *         in="query",
      *         required=false,
-     *         type="string"
+     *         type="string",
+     *         description="Specific start date or date range (e.g. [2013-09-03T13:17:45Z,2013-09-03T13:37:45Z])"
+     *     ),
+     *     @SWG\Parameter(
+     *         name="updatedDate",
+     *         in="query",
+     *         required=false,
+     *         type="string",
+     *         description="Specific start date or date range (e.g. [2013-09-03T13:17:45Z,2013-09-03T13:37:45Z])"
      *     ),
      *     @SWG\Response(
      *         response=200,
@@ -150,7 +158,7 @@ final class ItemController extends Controller
      *     ),
      *     security={
      *         {
-     *             "api_auth": {"openid api"}
+     *             "api_auth": {"openid read:item"}
      *         }
      *     }
      * )
@@ -176,7 +184,7 @@ final class ItemController extends Controller
             new ModelSet(new Item()),
             new ItemsResponse(),
             null,
-            ['barcode', 'nyplSource', 'id']
+            ['barcode', 'nyplSource', 'id', 'updatedDate', 'createdDate']
         );
     }
 
@@ -221,7 +229,7 @@ final class ItemController extends Controller
      *     ),
      *     security={
      *         {
-     *             "api_auth": {"openid api"}
+     *             "api_auth": {"openid read:item"}
      *         }
      *     }
      * )

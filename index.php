@@ -65,6 +65,11 @@ try {
         }
     );
 
+    $service->post("/api/v0.1/item-post-requests", function (Request $request, Response $response) {
+        $controller = new Controller\BasePostController\ItemPostController($request, $response);
+        return $controller->createItemPostRequest();
+    });
+
     $service->run();
 } catch (Exception $exception) {
     ErrorHandler::processShutdownError($exception->getMessage(), $exception);
