@@ -10,7 +10,7 @@ use NYPL\Starter\Config;
 use NYPL\Starter\ErrorHandler;
 
 try {
-    Config::initialize(__DIR__);
+    Config::initialize(__DIR__ . '/config');
 
     $service = new Service();
 
