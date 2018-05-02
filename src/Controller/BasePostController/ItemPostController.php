@@ -23,7 +23,7 @@ final class ItemPostController extends BasePostController
      * @SWG\Post(
      *     path="/v0.1/item-post-requests",
      *     summary="Create a new Item Post Request",
-     *     description="Request up to 500 records be re-posted to the ItemBulk stream starting from the record after lastId.",
+     *     description="Request records be re-posted to the ItemBulk stream. You can specify lastId or ids. If using lastId, you can post up to 500 records starting from the record after lastId.",
      *     tags={"items"},
      *     operationId="createItemPostRequest",
      *     consumes={"application/json"},

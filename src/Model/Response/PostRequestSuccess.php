@@ -2,6 +2,7 @@
 namespace NYPL\Services\Model\Response;
 
 use NYPL\Services\Model\DataModel\BasePostRequest;
+use NYPL\Starter\BulkModels;
 
 /**
  * @SWG\Definition(title="PostRequestSuccess", type="object")
@@ -27,14 +28,29 @@ class PostRequestSuccess
     public $limit;
 
     /**
-     * @param BasePostRequest $bibPostRequest
+     * @SWG\Property
+     * @var string[]
      */
-    public function __construct(BasePostRequest $bibPostRequest = null)
+    public $ids = [];
+
+    /**
+     * @var int
+     */
+    public $count = 0;
+
+    /**
+     * @param BasePostRequest $bibPostRequest
+     * @param BulkModels $bulkModels
+     */
+    public function __construct(BasePostRequest $bibPostRequest = null, BulkModels $bulkModels = null)
     {
-        if ($bibPostRequest) {
+        if ($bibPostRequest && $bulkModels) {
             $this->setLastId($bibPostRequest->getLastId());
             $this->setNyplSource($bibPostRequest->getNyplSource());
             $this->setLimit($bibPostRequest->getLimit());
+            $this->setIds($bibPostRequest->getIds());
+
+            $this->setCount(count($bulkModels->getSuccessModels()));
         }
     }
 
@@ -84,5 +100,37 @@ class PostRequestSuccess
     public function setLimit($limit = 0)
     {
         $this->limit = (int) $limit;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getIds()
+    {
+        return $this->ids;
+    }
+
+    /**
+     * @param string[] $ids
+     */
+    public function setIds($ids = [])
+    {
+        $this->ids = $ids;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCount()
+    {
+        return $this->count;
+    }
+
+    /**
+     * @param int $count
+     */
+    public function setCount($count = 0)
+    {
+        $this->count = $count;
     }
 }

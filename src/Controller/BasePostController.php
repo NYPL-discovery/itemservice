@@ -27,27 +27,41 @@ abstract class BasePostController extends Controller
      * @param string $lastId
      * @param string $nyplSource
      * @param int $limit
+     * @param array $ids
      *
      * @return ModelSet
      */
-    protected function getRecords($lastId = '', $nyplSource = '', $limit = 0)
+    protected function getRecords($lastId = '', $nyplSource = '', $limit = 0, $ids = [])
     {
         $records = new ModelSet($this->getBaseRecord());
-
-        $records->addFilter(
-            new Filter\QueryFilter('id', $lastId, false, '>')
-        );
 
         if ($nyplSource) {
             $records->addFilter(new Filter\QueryFilter('nypl-source', $nyplSource));
         }
 
         $records->setOrderBy('id');
-        $records->setLimit($limit);
 
-        $records->read();
+        if ($lastId) {
+            $records->addFilter(
+                new Filter\QueryFilter('id', $lastId, false, '>')
+            );
 
-        return $records;
+            $records->setLimit($limit);
+
+            $records->read();
+
+            return $records;
+        }
+
+        if ($ids) {
+            $records->addFilter(
+                new Filter\QueryFilter('id', $ids)
+            );
+
+            $records->read();
+
+            return $records;
+        }
     }
 
     /**
@@ -80,28 +94,33 @@ abstract class BasePostController extends Controller
 
         $postRequest->translate($this->getRequest()->getParsedBody());
 
-        if ($postRequest->getLastId() === null) {
-            throw new APIException('lastId was not specified', null, 0, null, 400);
+        if (!$postRequest->getLastId() && !$postRequest->getIds()) {
+            throw new APIException('lastIds or ids were not specified', null, 0, null, 400);
         }
 
-        if (!$postRequest->getLimit()) {
-            throw new APIException('limit was not specified', null, 0, null, 400);
+        if ($postRequest->getLastId()) {
+            if (!$postRequest->getLimit()) {
+                throw new APIException('limit was not specified', null, 0, null, 400);
+            }
         }
 
         $records = $this->getRecords(
             $postRequest->getLastId(),
             $postRequest->getNyplSource(),
-            $postRequest->getLimit()
+            $postRequest->getLimit(),
+            $postRequest->getIds()
         );
 
-        $postRequest->setLastId($this->getLastId($records));
+        if ($postRequest->getLastId()) {
+            $postRequest->setLastId($this->getLastId($records));
+        }
 
         $bulkModels = new BulkModels();
         $bulkModels->setSuccessModels($records->getData());
         $bulkModels->publish($streamName);
 
         return $this->getResponse()->withJson(
-            new PostRequestSuccess($postRequest)
+            new PostRequestSuccess($postRequest, $bulkModels)
         );
     }
 }

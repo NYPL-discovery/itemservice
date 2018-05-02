@@ -30,6 +30,12 @@ abstract class BasePostRequest extends DataModel
     public $limit;
 
     /**
+     * @SWG\Property
+     * @var string[]
+     */
+    public $ids;
+
+    /**
      * @return string
      */
     public function getNyplSource()
@@ -85,5 +91,35 @@ abstract class BasePostRequest extends DataModel
         }
 
         $this->limit = $limit;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getIds()
+    {
+        return $this->ids;
+    }
+
+    /**
+     * @param string[] $ids
+     */
+    public function setIds($ids = [])
+    {
+        $this->ids = $ids;
+    }
+
+    /**
+     * @param $data
+     *
+     * @return array
+     */
+    public function translateIds($data)
+    {
+        if (is_string($data)) {
+            $data = json_decode($data);
+        }
+
+        return $data;
     }
 }
