@@ -34,6 +34,7 @@ class PostRequestSuccess
     public $ids = [];
 
     /**
+     * @SWG\Property(example=100)
      * @var int
      */
     public $count = 0;
