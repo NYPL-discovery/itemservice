@@ -141,6 +141,16 @@ final class ItemController extends Controller
      *         type="string",
      *         description="Specific start date or date range (e.g. [2013-09-03T13:17:45Z,2013-09-03T13:37:45Z])"
      *     ),
+     *     @SWG\Parameter(
+     *         name="deleted",
+     *         in="query",
+     *         required=false,
+     *          type="boolean",
+     *          @SWG\Items(
+     *              enum={"true", "false"},
+     *              default=""
+     *          ),
+     *     ),
      *     @SWG\Response(
      *         response=200,
      *         description="Successful operation",
@@ -184,7 +194,7 @@ final class ItemController extends Controller
             new ModelSet(new Item()),
             new ItemsResponse(),
             null,
-            ['barcode', 'nyplSource', 'id', 'updatedDate', 'createdDate']
+            ['barcode', 'nyplSource', 'id', 'updatedDate', 'createdDate', 'deleted']
         );
     }
 
