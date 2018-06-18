@@ -3,6 +3,7 @@ namespace NYPL\Services\Model\DataModel;
 
 use NYPL\Services\Model\DataModel;
 use NYPL\Starter\APIException;
+use NYPL\Starter\Model\LocalDateTime;
 use NYPL\Starter\Model\ModelTrait\TranslateTrait;
 
 abstract class BasePostRequest extends DataModel
@@ -22,6 +23,12 @@ abstract class BasePostRequest extends DataModel
      * @var string|null
      */
     public $lastId;
+
+    /**
+     * @SWG\Property(example="2016-01-07T02:32:51Z", type="string")
+     * @var LocalDateTime
+     */
+    public $lastUpdatedDate;
 
     /**
      * @SWG\Property(example=100)
@@ -121,5 +128,31 @@ abstract class BasePostRequest extends DataModel
         }
 
         return $data;
+    }
+
+    /**
+     * @return LocalDateTime
+     */
+    public function getLastUpdatedDate()
+    {
+        return $this->lastUpdatedDate;
+    }
+
+    /**
+     * @param LocalDateTime $lastUpdatedDate
+     */
+    public function setLastUpdatedDate(LocalDateTime $lastUpdatedDate)
+    {
+        $this->lastUpdatedDate = $lastUpdatedDate;
+    }
+
+    /**
+     * @param string $updatedDate
+     *
+     * @return LocalDateTime
+     */
+    public function translateLastUpdatedDate($updatedDate = '')
+    {
+        return new LocalDateTime(LocalDateTime::FORMAT_DATE_TIME_RFC, $updatedDate);
     }
 }

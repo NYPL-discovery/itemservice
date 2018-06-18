@@ -10,6 +10,8 @@ use NYPL\Starter\Controller;
 use NYPL\Starter\Filter;
 use NYPL\Starter\Model;
 use NYPL\Starter\ModelSet;
+use NYPL\Starter\Model\LocalDateTime;
+use NYPL\Starter\OrderBy;
 
 abstract class BasePostController extends Controller
 {
@@ -28,10 +30,12 @@ abstract class BasePostController extends Controller
      * @param string $nyplSource
      * @param int $limit
      * @param array $ids
+     * @param LocalDateTime $lastDateUpdated
      *
+     * @throws APIException
      * @return ModelSet
      */
-    protected function getRecords($lastId = '', $nyplSource = '', $limit = 0, $ids = [])
+    protected function getRecords($lastId = '', $nyplSource = '', $limit = 0, $ids = [], LocalDateTime $lastDateUpdated = null)
     {
         $records = new ModelSet($this->getBaseRecord());
 
@@ -39,12 +43,24 @@ abstract class BasePostController extends Controller
             $records->addFilter(new Filter\QueryFilter('nypl-source', $nyplSource));
         }
 
-        $records->setOrderBy('id');
+        if ($lastDateUpdated) {
+            $records->addOrderBy(new OrderBy('updated_date'));
+        }
 
-        if ($lastId) {
-            $records->addFilter(
-                new Filter\QueryFilter('id', $lastId, false, '>')
-            );
+        $records->addOrderBy(new OrderBy('id'));
+
+        if ($lastId || $lastDateUpdated) {
+            if ($lastDateUpdated) {
+                $records->addFilter(
+                    new Filter\QueryFilter('updated_date', $lastDateUpdated->getDateTime()->format('c'), false, '>')
+                );
+            }
+
+            if ($lastId) {
+                $records->addFilter(
+                    new Filter\QueryFilter('id', $lastId, false, '>')
+                );
+            }
 
             $records->setLimit($limit);
 
@@ -67,16 +83,31 @@ abstract class BasePostController extends Controller
     /**
      * @param ModelSet $modelSet
      *
+     * @return Item
+     */
+    protected function getLastRecord(ModelSet $modelSet)
+    {
+        return $modelSet->getData()[count($modelSet->getData()) - 1];
+    }
+
+    /**
+     * @param ModelSet $modelSet
+     *
      * @return string
      */
     protected function getLastId(ModelSet $modelSet)
     {
-        /**
-         * @var Item $lastRecord
-         */
-        $lastRecord = $modelSet->getData()[count($modelSet->getData()) - 1];
+        return $this->getLastRecord($modelSet)->getId();
+    }
 
-        return $lastRecord->getId();
+    /**
+     * @param ModelSet $modelSet
+     *
+     * @return LocalDateTime
+     */
+    protected function getLastUpdatedDate(ModelSet $modelSet)
+    {
+        return $this->getLastRecord($modelSet)->getUpdatedDate();
     }
 
     /**
@@ -94,25 +125,28 @@ abstract class BasePostController extends Controller
 
         $postRequest->translate($this->getRequest()->getParsedBody());
 
-        if (!$postRequest->getLastId() && !$postRequest->getIds()) {
-            throw new APIException('lastIds or ids were not specified', null, 0, null, 400);
+        if (!$postRequest->getLastId() && !$postRequest->getIds() && !$postRequest->getLastUpdatedDate()) {
+            throw new APIException('lastIds, lastUpdatedDate, or ids were not specified', null, 0, null, 400);
         }
 
-        if ($postRequest->getLastId()) {
-            if (!$postRequest->getLimit()) {
-                throw new APIException('limit was not specified', null, 0, null, 400);
-            }
+        if ($postRequest->getLastId() && !$postRequest->getLimit()) {
+            throw new APIException('limit was not specified', null, 0, null, 400);
         }
 
         $records = $this->getRecords(
             $postRequest->getLastId(),
             $postRequest->getNyplSource(),
             $postRequest->getLimit(),
-            $postRequest->getIds()
+            $postRequest->getIds(),
+            $postRequest->getLastUpdatedDate()
         );
 
-        if ($postRequest->getLastId()) {
+        if ($postRequest->getLastId() || $postRequest->getLastUpdatedDate()) {
             $postRequest->setLastId($this->getLastId($records));
+        }
+
+        if ($postRequest->getLastUpdatedDate()) {
+            $postRequest->setLastUpdatedDate($this->getLastUpdatedDate($records));
         }
 
         $bulkModels = new BulkModels();

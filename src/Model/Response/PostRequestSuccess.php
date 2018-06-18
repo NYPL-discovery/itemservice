@@ -3,6 +3,7 @@ namespace NYPL\Services\Model\Response;
 
 use NYPL\Services\Model\DataModel\BasePostRequest;
 use NYPL\Starter\BulkModels;
+use NYPL\Starter\Model\LocalDateTime;
 
 /**
  * @SWG\Definition(title="PostRequestSuccess", type="object")
@@ -14,6 +15,12 @@ class PostRequestSuccess
      * @var string
      */
     public $lastId;
+
+    /**
+     * @SWG\Property(example="2016-01-07T02:32:51Z")
+     * @var string
+     */
+    public $lastUpdatedDate;
 
     /**
      * @SWG\Property(example="sierra-nypl")
@@ -47,6 +54,11 @@ class PostRequestSuccess
     {
         if ($bibPostRequest && $bulkModels) {
             $this->setLastId($bibPostRequest->getLastId());
+
+            if ($bibPostRequest->getLastUpdatedDate()) {
+                $this->setLastUpdatedDate($bibPostRequest->getLastUpdatedDate()->getDateTime()->format('c'));
+            }
+
             $this->setNyplSource($bibPostRequest->getNyplSource());
             $this->setLimit($bibPostRequest->getLimit());
             $this->setIds($bibPostRequest->getIds());
@@ -133,5 +145,21 @@ class PostRequestSuccess
     public function setCount($count = 0)
     {
         $this->count = $count;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastUpdatedDate(): string
+    {
+        return $this->lastUpdatedDate;
+    }
+
+    /**
+     * @param string $lastUpdatedDate
+     */
+    public function setLastUpdatedDate(string $lastUpdatedDate): void
+    {
+        $this->lastUpdatedDate = $lastUpdatedDate;
     }
 }
