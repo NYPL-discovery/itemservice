@@ -4,10 +4,9 @@
   "description": "Lambda for the NYPL Item Service",
   "main": "index.js",
   "scripts": {
-    "deploy-development": "./node_modules/.bin/node-lambda deploy -e development -f ./config/development.env -S ./config/event_sources_development.json -o arn:aws:iam::224280085904:role/lambda_basic_execution -a $aws_access_key_id_development -s $aws_secret_access_key_development",
-    "deploy-production": "./node_modules/.bin/node-lambda deploy -e production -f ./config/production.env -S ./config/event_sources_production.json -o arn:aws:iam::946183545209:role/lambda-full-access -a $aws_access_key_id_production -s $aws_secret_access_key_production",
-    "deploy-development-vpc": "./node_modules/.bin/node-lambda deploy -e development -f ./config/development.env -S ./config/event_sources_development.json -o arn:aws:iam::224280085904:role/lambda_basic_execution -b subnet-f4fe56af -g sg-1d544067 -a $aws_access_key_id_development -s $aws_secret_access_key_development",
-    "deploy-production-vpc": "./node_modules/.bin/node-lambda deploy -e production -f ./config/production.env -S ./config/event_sources_production.json -o arn:aws:iam::946183545209:role/lambda-full-access -b subnet-5deecd15,subnet-59bcdd03 -g sg-116eeb60 -a $aws_access_key_id_production -s $aws_secret_access_key_production",
+    "deploy-development": "./node_modules/.bin/node-lambda deploy -e development -f ./config/development.env -S ./config/event_sources_development.json -o arn:aws:iam::224280085904:role/lambda_basic_execution -b subnet-f4fe56af -g sg-1d544067 -a $aws_access_key_id_development -s $aws_secret_access_key_development",
+    "deploy-qa": "./node_modules/.bin/node-lambda deploy -e qa -f ./config/qa.env -S ./config/event_sources_qa.json -o arn:aws:iam::946183545209:role/lambda-full-access -b subnet-f35de0a9,subnet-21a3b244 -g sg-aa74f1db -a $aws_access_key_id_production -s $aws_secret_access_key_production",
+    "deploy-production": "./node_modules/.bin/node-lambda deploy -e production -f ./config/production.env -S ./config/event_sources_production.json -o arn:aws:iam::946183545209:role/lambda-full-access -b subnet-5deecd15,subnet-59bcdd03 -g sg-116eeb60 -a $aws_access_key_id_production -s $aws_secret_access_key_production",
     "test-items": "node-lambda run -j tests/events/items.json -x tests/events/context.json"
   },
   "repository": {
