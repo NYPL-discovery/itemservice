@@ -7,6 +7,22 @@ use NYPL\Services\Model\DataModel\BasePostRequest\ItemPostRequest;
 use NYPL\Starter\APIException;
 use NYPL\Starter\Config;
 
+/**
+ * @OA\Tag(
+ *     name="user",
+ *     description="User related operations"
+ * )
+ * @OA\Info(
+ *     version="1.0",
+ *     title="Example API",
+ *     description="Example info",
+ *     @OA\Contact(name="Swagger API Team")
+ * )
+ * @OA\Server(
+ *     url="https://example.localhost",
+ *     description="API server"
+ * )
+ */
 final class ItemPostController extends BasePostController
 {
     protected function getBaseRecord()
@@ -20,7 +36,7 @@ final class ItemPostController extends BasePostController
     }
 
     /**
-     * @SWG\Post(
+     * @OA\Post(
      *     path="/v0.1/item-post-requests",
      *     summary="Create a new Item Post Request",
      *     description="Request records be re-posted to the BibBulk stream. You can specify `lastId` and/or `lastUpdatedDate` or `ids`.
@@ -29,31 +45,31 @@ final class ItemPostController extends BasePostController
      *     operationId="createItemPostRequest",
      *     consumes={"application/json"},
      *     produces={"application/json"},
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         name="ItemPostRequest",
      *         in="body",
      *         description="",
      *         required=true,
-     *         @SWG\Schema(ref="#/definitions/ItemPostRequest")
+     *         @OA\Schema(ref="#/definitions/ItemPostRequest")
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=200,
      *         description="Successful operation",
-     *         @SWG\Schema(ref="#/definitions/PostRequestSuccess")
+     *         @OA\Schema(ref="#/definitions/PostRequestSuccess")
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response="401",
      *         description="Unauthorized"
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response="404",
      *         description="Not found",
-     *         @SWG\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/definitions/ErrorResponse")
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response="500",
      *         description="Generic server error",
-     *         @SWG\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/definitions/ErrorResponse")
      *     ),
      *     security={
      *         {

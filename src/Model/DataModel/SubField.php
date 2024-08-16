@@ -4,20 +4,20 @@ namespace NYPL\Services\Model\DataModel;
 use NYPL\Starter\Model;
 
 /**
- * @SWG\Definition(type="object", required={"tag"})
+ * @OA\Definition(type="object", required={"tag"})
  */
 class SubField extends Model
 {
     use Model\ModelTrait\TranslateTrait;
 
     /**
-     * @SWG\Property(example="a")
+     * @OA\Property(example="a")
      * @var string
      */
     public $tag;
 
     /**
-     * @SWG\Property(example="Wizards")
+     * @OA\Property(example="Wizards")
      * @var string
      */
     public $content;

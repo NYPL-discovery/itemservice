@@ -8,44 +8,60 @@ use NYPL\Services\Model\DataModel\BaseItem\Item;
 use NYPL\Services\Model\Response\SuccessResponse\ItemResponse;
 use NYPL\Starter\ModelSet;
 
+/**
+ * @OA\Tag(
+ *     name="user",
+ *     description="User related operations"
+ * )
+ * @OA\Info(
+ *     version="1.0",
+ *     title="Example API",
+ *     description="Example info",
+ *     @OA\Contact(name="Swagger API Team")
+ * )
+ * @OA\Server(
+ *     url="https://example.localhost",
+ *     description="API server"
+ * )
+ */
 final class BibController extends Controller
 {
     /**
-     * @SWG\Get(
+     * @OA\Get(
      *     path="/v0.1/bibs/{nyplSource}/{id}/items",
      *     summary="Get items for a Bib",
      *     tags={"bibs"},
      *     operationId="getBibItems",
      *     consumes={"application/json"},
      *     produces={"application/json"},
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         in="path",
      *         name="nyplSource",
      *         required=true,
      *         type="string",
      *         format="string"
      *     ),
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         in="path",
      *         name="id",
      *         required=true,
      *         type="string",
      *         format="string"
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=200,
      *         description="Successful operation",
-     *         @SWG\Schema(ref="#/definitions/ItemsResponse")
+     *         @OA\Schema(ref="#/definitions/ItemsResponse")
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response="404",
      *         description="Not found",
-     *         @SWG\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/definitions/ErrorResponse")
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response="500",
      *         description="Generic server error",
-     *         @SWG\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/definitions/ErrorResponse")
      *     ),
      *     security={
      *         {
@@ -68,48 +84,48 @@ final class BibController extends Controller
     }
 
     /**
-     * @SWG\Post(
+     * @OA\Post(
      *     path="/v0.1/bibs/{nyplSource}/{id}/items",
      *     summary="Create a new Item for a Bib",
      *     tags={"bibs"},
      *     operationId="createBibItem",
      *     consumes={"application/json"},
      *     produces={"application/json"},
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         in="path",
      *         name="nyplSource",
      *         required=true,
      *         type="string",
      *         format="string"
      *     ),
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         in="path",
      *         name="id",
      *         required=true,
      *         type="string",
      *         format="string"
      *     ),
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         name="NewBibItem",
      *         in="body",
      *         description="",
      *         required=true,
-     *         @SWG\Schema(ref="#/definitions/NewBibItem"),
+     *         @OA\Schema(ref="#/definitions/NewBibItem"),
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=200,
      *         description="Successful operation",
-     *         @SWG\Schema(ref="#/definitions/ItemResponse")
+     *         @OA\Schema(ref="#/definitions/ItemResponse")
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response="404",
      *         description="Not found",
-     *         @SWG\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/definitions/ErrorResponse")
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response="500",
      *         description="Generic server error",
-     *         @SWG\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/definitions/ErrorResponse")
      *     ),
      *     security={
      *         {

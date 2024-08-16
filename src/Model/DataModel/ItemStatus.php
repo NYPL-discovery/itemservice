@@ -6,26 +6,26 @@ use NYPL\Starter\Model\ModelTrait\TranslateTrait;
 use NYPL\Starter\Model\LocalDateTime;
 
 /**
- * @SWG\Definition(type="object", required={"code"})
+ * @OA\Definition(type="object", required={"code"})
  */
 class ItemStatus extends Model
 {
     use TranslateTrait;
 
     /**
-     * @SWG\Property(example="-")
+     * @OA\Property(example="-")
      * @var string
      */
     public $code;
 
     /**
-     * @SWG\Property(example="AVAILABLE")
+     * @OA\Property(example="AVAILABLE")
      * @var string
      */
     public $display;
 
     /**
-     * @SWG\Property(example="2008-12-24T03:16:00Z", type="string")
+     * @OA\Property(example="2008-12-24T03:16:00Z", type="string")
      * @var Model\LocalDateTime
      */
     public $duedate;

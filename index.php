@@ -1,13 +1,17 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-use Slim\Http\Request;
-use Slim\Http\Response;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
 use NYPL\Starter\Service;
 use NYPL\Services\Controller;
 use NYPL\Starter\SwaggerGenerator;
 use NYPL\Starter\Config;
 use NYPL\Starter\ErrorHandler;
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 
 try {
     Config::initialize(__DIR__ . '/config');

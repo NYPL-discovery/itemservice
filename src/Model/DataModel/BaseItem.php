@@ -10,79 +10,79 @@ abstract class BaseItem extends DataModel
     use TranslateTrait;
 
     /**
-     * @SWG\Property(example="17746307")
+     * @OA\Property(example="17746307")
      * @var string
      */
     public $id;
 
     /**
-     * @SWG\Property(example="item")
+     * @OA\Property(example="item")
      * @var string
      */
     public $nyplType;
 
     /**
-     * @SWG\Property(example="2016-01-07T02:32:51Z", type="string")
+     * @OA\Property(example="2016-01-07T02:32:51Z", type="string")
      * @var LocalDateTime
      */
     public $updatedDate;
 
     /**
-     * @SWG\Property(example="2008-12-24T03:16:00Z", type="string")
+     * @OA\Property(example="2008-12-24T03:16:00Z", type="string")
      * @var LocalDateTime
      */
     public $createdDate;
 
     /**
-     * @SWG\Property(example="2008-12-24", type="string")
+     * @OA\Property(example="2008-12-24", type="string")
      * @var LocalDateTime
      */
     public $deletedDate;
 
     /**
-     * @SWG\Property(example=false)
+     * @OA\Property(example=false)
      * @var bool
      */
     public $deleted;
 
     /**
-     * @SWG\Property()
+     * @OA\Property()
      * @var Location
      */
     public $location;
 
     /**
-     * @SWG\Property()
+     * @OA\Property()
      * @var ItemStatus
      */
     public $status;
 
     /**
-     * @SWG\Property(example="33433001888415")
+     * @OA\Property(example="33433001888415")
      * @var string
      */
     public $barcode;
 
     /**
-     * @SWG\Property(example="|h*ONPA 84-446")
+     * @OA\Property(example="|h*ONPA 84-446")
      * @var string
      */
     public $callNumber;
 
     /**
-     * @SWG\Property(example="Book, paperback")
+     * @OA\Property(example="Book, paperback")
      * @var string
      */
     public $itemType;
 
     /**
-     * @SWG\Property()
+     * @OA\Property()
      * @var FixedField[]
      */
     public $fixedFields;
 
     /**
-     * @SWG\Property()
+     * @OA\Property()
      * @var VarField[]
      */
     public $varFields;

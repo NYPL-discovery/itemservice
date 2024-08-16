@@ -9,7 +9,7 @@ use NYPL\Starter\Model\ModelTrait\DBReadTrait;
 use NYPL\Starter\SchemaClient;
 
 /**
- * @SWG\Definition(title="ItemPostRequest", type="object", required={"id"})
+ * @OA\Definition(title="ItemPostRequest", type="object", required={"id"})
  */
 class ItemPostRequest extends BasePostRequest implements MessageInterface, ReadInterface
 {

@@ -4,26 +4,26 @@ namespace NYPL\Services\Model\DataModel;
 use NYPL\Starter\Model;
 
 /**
- * @SWG\Definition(type="object", required={"label"})
+ * @OA\Definition(type="object", required={"label"})
  */
 class FixedField extends Model
 {
     use Model\ModelTrait\TranslateTrait;
 
     /**
-     * @SWG\Property(example="Language")
+     * @OA\Property(example="Language")
      * @var string
      */
     public $label;
 
     /**
-     * @SWG\Property(example="eng")
+     * @OA\Property(example="eng")
      * @var string
      */
     public $value;
 
     /**
-     * @SWG\Property(example="English")
+     * @OA\Property(example="English")
      * @var string
      */
     public $display;

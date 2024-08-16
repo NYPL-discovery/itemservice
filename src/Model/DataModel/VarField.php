@@ -5,44 +5,44 @@ use NYPL\Starter\Model;
 use NYPL\Starter\Model\ModelTrait\TranslateTrait;
 
 /**
- * @SWG\Definition(type="object", required={"fieldTag"})
+ * @OA\Definition(type="object", required={"fieldTag"})
  */
 class VarField extends Model
 {
     use TranslateTrait;
 
     /**
-     * @SWG\Property(example="a")
+     * @OA\Property(example="a")
      * @var string
      */
     public $fieldTag;
 
     /**
-     * @SWG\Property(example="100")
+     * @OA\Property(example="100")
      * @var string
      */
     public $marcTag;
 
     /**
-     * @SWG\Property(example="1")
+     * @OA\Property(example="1")
      * @var string
      */
     public $ind1;
 
     /**
-     * @SWG\Property()
+     * @OA\Property()
      * @var string
      */
     public $ind2;
 
     /**
-     * @SWG\Property()
+     * @OA\Property()
      * @var string
      */
     public $content;
 
     /**
-     * @SWG\Property()
+     * @OA\Property()
      * @var SubField[]
      */
     public $subfields;

@@ -14,46 +14,29 @@ use NYPL\Services\Model\Response\SuccessResponse\ItemResponse;
 use NYPL\Services\Model\Response\SuccessResponse\ItemsResponse;
 use NYPL\Starter\ModelSet;
 
+/**
+ * @OA\Tag(
+ *     name="user",
+ *     description="User related operations"
+ * )
+ * @OA\Info(
+ *     version="1.0",
+ *     title="Example API",
+ *     description="Example info",
+ *     @OA\Contact(name="Swagger API Team")
+ * )
+ * @OA\Server(
+ *     url="https://example.localhost",
+ *     description="API server"
+ * )
+ */
 final class ItemController extends Controller
 {
+
     /**
-     * @SWG\Post(
-     *     path="/v0.1/items",
-     *     summary="Create new Items",
-     *     tags={"items"},
-     *     operationId="createItem",
-     *     consumes={"application/json"},
-     *     produces={"application/json"},
-     *     @SWG\Parameter(
-     *         name="NewItem",
-     *         in="body",
-     *         description="",
-     *         required=true,
-     *         @SWG\Schema(
-     *             type="array",
-     *             @SWG\Items(ref="#/definitions/NewItem")
-     *         )
-     *     ),
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Successful operation",
-     *         @SWG\Schema(ref="#/definitions/BulkItemsResponse")
-     *     ),
-     *     @SWG\Response(
-     *         response="404",
-     *         description="Not found",
-     *         @SWG\Schema(ref="#/definitions/ErrorResponse")
-     *     ),
-     *     @SWG\Response(
-     *         response="500",
-     *         description="Generic server error",
-     *         @SWG\Schema(ref="#/definitions/ErrorResponse")
-     *     ),
-     *     security={
-     *         {
-     *             "api_auth": {"openid write:item"}
-     *         }
-     *     }
+     * @OA\Get(
+     *     path="/api/resource.json",
+     *     @OA\Response(response="200", description="An example resource")
      * )
      */
     public function createItem($nyplSource = "", $id = "")
@@ -83,88 +66,88 @@ final class ItemController extends Controller
     }
 
     /**
-     * @SWG\Get(
+     * @OA\Get(
      *     path="/v0.1/items",
      *     summary="Get a list of Items",
      *     tags={"items"},
      *     operationId="getItems",
      *     consumes={"application/json"},
      *     produces={"application/json"},
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         name="id",
      *         in="query",
      *         required=false,
      *         type="string",
      *         description="Separate multiple IDs with a comma"
      *     ),
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         name="offset",
      *         in="query",
      *         required=false,
      *         type="integer"
      *     ),
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         name="limit",
      *         in="query",
      *         required=false,
      *         type="integer"
      *     ),
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         name="barcode",
      *         in="query",
      *         required=false,
      *         type="string"
      *     ),
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         name="nyplSource",
      *         in="query",
      *         required=false,
      *         type="string"
      *     ),
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         name="bibId",
      *         in="query",
      *         required=false,
      *         type="string"
      *     ),
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         name="createdDate",
      *         in="query",
      *         required=false,
      *         type="string",
      *         description="Specific start date or date range (e.g. [2013-09-03T13:17:45Z,2013-09-03T13:37:45Z])"
      *     ),
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         name="updatedDate",
      *         in="query",
      *         required=false,
      *         type="string",
      *         description="Specific start date or date range (e.g. [2013-09-03T13:17:45Z,2013-09-03T13:37:45Z])"
      *     ),
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         name="deleted",
      *         in="query",
      *         required=false,
      *          type="boolean",
-     *          @SWG\Items(
+     *          @OA\Items(
      *              enum={"true", "false"},
      *              default=""
      *          ),
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=200,
      *         description="Successful operation",
-     *         @SWG\Schema(ref="#/definitions/ItemsResponse")
+     *         @OA\Schema(ref="#/definitions/ItemsResponse")
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response="404",
      *         description="Not found",
-     *         @SWG\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/definitions/ErrorResponse")
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response="500",
      *         description="Generic server error",
-     *         @SWG\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/definitions/ErrorResponse")
      *     ),
      *     security={
      *         {
@@ -201,41 +184,41 @@ final class ItemController extends Controller
 
 
     /**
-     * @SWG\Get(
+     * @OA\Get(
      *     path="/v0.1/items/{nyplSource}/{id}",
      *     summary="Get an Item",
      *     tags={"items"},
      *     operationId="getItem",
      *     consumes={"application/json"},
      *     produces={"application/json"},
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         in="path",
      *         name="nyplSource",
      *         required=true,
      *         type="string",
      *         format="string"
      *     ),
-     *     @SWG\Parameter(
+     *     @OA\Parameter(
      *         in="path",
      *         name="id",
      *         required=true,
      *         type="string",
      *         format="string"
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response=200,
      *         description="Successful operation",
-     *         @SWG\Schema(ref="#/definitions/ItemResponse")
+     *         @OA\Schema(ref="#/definitions/ItemResponse")
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response="404",
      *         description="Not found",
-     *         @SWG\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/definitions/ErrorResponse")
      *     ),
-     *     @SWG\Response(
+     *     @OA\Response(
      *         response="500",
      *         description="Generic server error",
-     *         @SWG\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/definitions/ErrorResponse")
      *     ),
      *     security={
      *         {

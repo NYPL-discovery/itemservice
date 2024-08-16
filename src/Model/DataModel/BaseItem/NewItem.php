@@ -4,18 +4,18 @@ namespace NYPL\Services\Model\DataModel\BaseItem;
 use NYPL\Services\Model\DataModel\BaseItem;
 
 /**
- * @SWG\Definition(type="object")
+ * @OA\Definition(type="object")
  */
 class NewItem extends BaseItem
 {
     /**
-     * @SWG\Property(example="sierra-nypl")
+     * @OA\Property(example="sierra-nypl")
      * @var string
      */
     public $nyplSource;
 
     /**
-     * @SWG\Property()
+     * @OA\Property()
      * @var string[]
      */
     public $bibIds;

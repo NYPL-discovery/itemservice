@@ -5,12 +5,12 @@ use NYPL\Services\Model\DataModel\BaseItem\Item;
 use NYPL\Starter\Model\Response\SuccessResponse;
 
 /**
- * @SWG\Definition(title="ItemsResponse", type="object")
+ * @OA\Definition(title="ItemsResponse", type="object")
  */
 class ItemsResponse extends SuccessResponse
 {
     /**
-     * @SWG\Property
+     * @OA\Property
      * @var Item[]
      */
     public $data;

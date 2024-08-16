@@ -6,42 +6,42 @@ use NYPL\Starter\BulkModels;
 use NYPL\Starter\Model\LocalDateTime;
 
 /**
- * @SWG\Definition(title="PostRequestSuccess", type="object")
+ * @OA\Definition(title="PostRequestSuccess", type="object")
  */
 class PostRequestSuccess
 {
     /**
-     * @SWG\Property(example="26823541")
+     * @OA\Property(example="26823541")
      * @var string
      */
     public $lastId;
 
     /**
-     * @SWG\Property(example="2016-01-07T02:32:51Z")
+     * @OA\Property(example="2016-01-07T02:32:51Z")
      * @var string
      */
     public $lastUpdatedDate;
 
     /**
-     * @SWG\Property(example="sierra-nypl")
+     * @OA\Property(example="sierra-nypl")
      * @var string
      */
     public $nyplSource;
 
     /**
-     * @SWG\Property(example=100)
+     * @OA\Property(example=100)
      * @var int
      */
     public $limit;
 
     /**
-     * @SWG\Property
+     * @OA\Property
      * @var string[]
      */
     public $ids = [];
 
     /**
-     * @SWG\Property(example=100)
+     * @OA\Property(example=100)
      * @var int
      */
     public $count = 0;

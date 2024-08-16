@@ -13,31 +13,31 @@ abstract class BasePostRequest extends DataModel
     use TranslateTrait;
 
     /**
-     * @SWG\Property(example="sierra-nypl")
+     * @OA\Property(example="sierra-nypl")
      * @var string
      */
     public $nyplSource = '';
 
     /**
-     * @SWG\Property(example="26823541")
+     * @OA\Property(example="26823541")
      * @var string|null
      */
     public $lastId;
 
     /**
-     * @SWG\Property(example="2016-01-07T02:32:51Z", type="string")
+     * @OA\Property(example="2016-01-07T02:32:51Z", type="string")
      * @var LocalDateTime
      */
     public $lastUpdatedDate;
 
     /**
-     * @SWG\Property(example=100)
+     * @OA\Property(example=100)
      * @var int
      */
     public $limit;
 
     /**
-     * @SWG\Property
+     * @OA\Property
      * @var string[]
      */
     public $ids;
