@@ -1,13 +1,16 @@
 {
-  "name": "nypl-item-service",
+  "name": "nypl/item-service",
   "description": "Lambda for the NYPL Item Service",
   "require": {
-    "nypl/microservice-starter": "^1.0"
+    "nypl/microservice-starter": "dev-john",
+    "monolog/monolog": ">=3.0",
+    "aura/di": "^4.2",
+    "doctrine/annotations": "^2.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "6.2.1",
-    "satooshi/php-coveralls": "1.0.1",
-    "squizlabs/php_codesniffer": "3.0.0"
+    "phpunit/phpunit": ">=6.2.1",
+    "php-coveralls/php-coveralls": ">=1.0.1",
+    "squizlabs/php_codesniffer": ">=3.0.0"
   },
   "autoload": {
     "psr-4": {
