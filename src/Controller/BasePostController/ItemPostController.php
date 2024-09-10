@@ -7,22 +7,6 @@ use NYPL\Services\Model\DataModel\BasePostRequest\ItemPostRequest;
 use NYPL\Starter\APIException;
 use NYPL\Starter\Config;
 
-/**
- * @OA\Tag(
- *     name="user",
- *     description="User related operations"
- * )
- * @OA\Info(
- *     version="1.0",
- *     title="Example API",
- *     description="Example info",
- *     @OA\Contact(name="Swagger API Team")
- * )
- * @OA\Server(
- *     url="https://example.localhost",
- *     description="API server"
- * )
- */
 final class ItemPostController extends BasePostController
 {
     protected function getBaseRecord()

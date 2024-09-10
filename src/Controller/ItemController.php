@@ -14,31 +14,8 @@ use NYPL\Services\Model\Response\SuccessResponse\ItemResponse;
 use NYPL\Services\Model\Response\SuccessResponse\ItemsResponse;
 use NYPL\Starter\ModelSet;
 
-/**
- * @OA\Tag(
- *     name="user",
- *     description="User related operations"
- * )
- * @OA\Info(
- *     version="1.0",
- *     title="Example API",
- *     description="Example info",
- *     @OA\Contact(name="Swagger API Team")
- * )
- * @OA\Server(
- *     url="https://example.localhost",
- *     description="API server"
- * )
- */
 final class ItemController extends Controller
 {
-
-    /**
-     * @OA\Get(
-     *     path="/api/resource.json",
-     *     @OA\Response(response="200", description="An example resource")
-     * )
-     */
     public function createItem($nyplSource = "", $id = "")
     {
         $bulkModels = new BulkModels();
@@ -158,12 +135,12 @@ final class ItemController extends Controller
      */
     public function getItems()
     {
-        if ($bidId = $this->getRequest()->getQueryParam('bibId')) {
+        if ($bidId = $this->getQueryParam('bibId')) {
             $items = new ModelSet(new Item());
 
             $items->addFilter(new Filter('bibIds', $bidId, true));
 
-            if ($nyplSource = $this->getRequest()->getQueryParam('nyplSource')) {
+            if ($nyplSource = $this->getQueryParam('nyplSource')) {
                 $items->addFilter(new Filter('nypl-source', $nyplSource));
             }
 
@@ -180,8 +157,6 @@ final class ItemController extends Controller
             ['barcode', 'nyplSource', 'id', 'updatedDate', 'createdDate', 'deleted']
         );
     }
-
-
 
     /**
      * @OA\Get(
@@ -265,7 +240,7 @@ final class ItemController extends Controller
     public function redirectToCatalog($nyplSource = '', $id = '')
     {
         $queryParams = http_build_query([
-            'fromUrl' => $this->getRequest()->getQueryParam('fromUrl')
+            'fromUrl' => $this->getQueryParam('fromUrl')
         ]);
 
         try {

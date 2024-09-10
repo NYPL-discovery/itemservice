@@ -2,7 +2,7 @@
   "name": "nypl/item-service",
   "description": "Lambda for the NYPL Item Service",
   "require": {
-    "nypl/microservice-starter": "dev-john",
+    "nypl/microservice-starter": "dev-php8-update",
     "monolog/monolog": ">=3.0",
     "aura/di": "^4.2",
     "doctrine/annotations": "^2.0"

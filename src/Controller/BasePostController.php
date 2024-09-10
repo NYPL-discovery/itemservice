@@ -13,31 +13,8 @@ use NYPL\Starter\ModelSet;
 use NYPL\Starter\Model\LocalDateTime;
 use NYPL\Starter\OrderBy;
 
-/**
- * @OA\Tag(
- *     name="user",
- *     description="User related operations"
- * )
- * @OA\Info(
- *     version="1.0",
- *     title="Example API",
- *     description="Example info",
- *     @OA\Contact(name="Swagger API Team")
- * )
- * @OA\Server(
- *     url="https://example.localhost",
- *     description="API server"
- * )
- */
 abstract class BasePostController extends Controller
 {
-
-    /**
-     * @OA\Get(
-     *     path="/api/resource.json",
-     *     @OA\Response(response="200", description="An example resource")
-     * )
-     */
     abstract protected function getBaseRecord();
 
     /**
