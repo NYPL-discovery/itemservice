@@ -1,7 +1,6 @@
 <?php
 namespace NYPL\Services\Controller;
 
-use NYPL\Services\Model\DataModel\BaseItem\Item;
 use NYPL\Services\Model\DataModel\BasePostRequest;
 use NYPL\Services\Model\Response\PostRequestSuccess;
 use NYPL\Starter\APIException;
@@ -12,6 +11,7 @@ use NYPL\Starter\Model;
 use NYPL\Starter\ModelSet;
 use NYPL\Starter\Model\LocalDateTime;
 use NYPL\Starter\OrderBy;
+use Psr\Http\Message\MessageInterface;
 
 abstract class BasePostController extends Controller
 {
@@ -27,10 +27,10 @@ abstract class BasePostController extends Controller
      * @param string $nyplSource
      * @param int $limit
      * @param array $ids
-     * @param LocalDateTime $lastDateUpdated
+     * @param LocalDateTime|null $lastDateUpdated
      *
+     * @return ModelSet|void
      * @throws APIException
-     * @return ModelSet
      */
     protected function getRecords($lastId = '', $nyplSource = '', $limit = 0, $ids = [], LocalDateTime $lastDateUpdated = null)
     {
@@ -80,7 +80,7 @@ abstract class BasePostController extends Controller
     /**
      * @param ModelSet $modelSet
      *
-     * @return Item
+     * @return Model
      */
     protected function getLastRecord(ModelSet $modelSet)
     {
@@ -109,7 +109,8 @@ abstract class BasePostController extends Controller
 
     /**
      * @param string $streamName
-     * @return \Slim\Http\Response
+     *
+     * @return MessageInterface
      * @throws APIException|\RuntimeException
      */
     public function createPostRequest($streamName = '')
@@ -150,8 +151,6 @@ abstract class BasePostController extends Controller
         $bulkModels->setSuccessModels($records->getData());
         $bulkModels->publish($streamName);
 
-        return $this->getResponse()->withJson(
-            new PostRequestSuccess($postRequest, $bulkModels)
-        );
+        return $this->getJsonResponse(new PostRequestSuccess($postRequest, $bulkModels));
     }
 }

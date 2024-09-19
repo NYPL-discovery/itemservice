@@ -6,6 +6,7 @@ use NYPL\Services\Model\DataModel\BaseItem\Item;
 use NYPL\Services\Model\DataModel\BasePostRequest\ItemPostRequest;
 use NYPL\Starter\APIException;
 use NYPL\Starter\Config;
+use NYPL\Starter\Model\ModelInterface\MessageInterface;
 
 final class ItemPostController extends BasePostController
 {
@@ -61,9 +62,11 @@ final class ItemPostController extends BasePostController
      *         }
      *     }
      * )
+     *
+     * @return \Psr\Http\Message\MessageInterface
      * @throws APIException|\RuntimeException
      */
-    public function createItemPostRequest()
+    public function createItemPostRequest(): MessageInterface
     {
         return $this->createPostRequest(Config::get('ITEM_BULK_STREAM_NAME'));
     }

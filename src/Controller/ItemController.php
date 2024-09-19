@@ -34,7 +34,7 @@ final class ItemController extends Controller
 
         $bulkModels->create(true);
 
-        return $this->getResponse()->withJson(
+        return $this->getJsonResponse(
             new BulkItemsResponse(
                 $bulkModels->getSuccessModels(),
                 $bulkModels->getBulkErrors()
@@ -225,9 +225,7 @@ final class ItemController extends Controller
             $item->addFixedField(88, $statusField);
         }
 
-        return $this->getResponse()->withJson(
-            new ItemResponse($item)
-        );
+        return $this->getJsonResponse(new ItemResponse($item));
     }
 
     /**

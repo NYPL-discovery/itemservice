@@ -128,8 +128,6 @@ final class BibController extends Controller
         $item = new Item($data);
         $item->create(true);
 
-        return $this->getResponse()->withJson(
-            new ItemResponse($item)
-        );
+        return $this->getJsonResponse(new ItemResponse($item));
     }
 }
