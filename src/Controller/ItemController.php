@@ -13,6 +13,7 @@ use NYPL\Services\Model\DataModel\BaseItem\Item;
 use NYPL\Services\Model\Response\SuccessResponse\ItemResponse;
 use NYPL\Services\Model\Response\SuccessResponse\ItemsResponse;
 use NYPL\Starter\ModelSet;
+use Psr\Http\Message\MessageInterface;
 
 final class ItemController extends Controller
 {
@@ -233,7 +234,7 @@ final class ItemController extends Controller
      * @param string $id
      *
      * @throws APIException
-     * @return \Slim\Http\Response
+     * @return MessageInterface
      */
     public function redirectToCatalog($nyplSource = '', $id = '')
     {
@@ -249,11 +250,16 @@ final class ItemController extends Controller
 
             $item->read();
 
-            return $this->getResponse()->withRedirect(
+            return $this->getResponse()
+                ->withStatus(302)
+                ->withHeader('Location',
                 Config::get('CATALOG_URL_PREFIX') . '/b' . $item->getBibIds()[0] . '-i' . $id . '?' . $queryParams
             );
         } catch (APIException $exception) {
-            return $this->getResponse()->withRedirect(
+
+            return $this->getResponse()
+                ->withStatus(302)
+                ->withHeader('Location',
                 Config::get('CATALOG_URL_PREFIX') . '/b1-i' . $id . '?' . $queryParams
             );
         }
