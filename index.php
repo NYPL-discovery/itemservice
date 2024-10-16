@@ -8,15 +8,29 @@ use NYPL\Starter\Config;
 use NYPL\Starter\ErrorHandler;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
 
 try {
     Config::initialize(__DIR__ . '/config');
 
     $service = new Service();
+    $service->addBodyParsingMiddleware();
+
+    $afterMiddleware = function (Request $request, RequestHandler $handler) {
+        $response = $handler->handle($request);
+        return $response
+            ->withHeader('Access-Control-Allow-Origin', '*')
+            ->withHeader('Access-Control-Allow-Headers', 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS')
+            ->withHeader('Access-Control-Allow-Credentials', 'true')
+            ->withHeader('X-NYPL-Original-Request', $request->getUri()->__toString())
+            ->withHeader('X-NYPL-Response-Date', date('c'));
+    };
+
+    $service->add($afterMiddleware);
 
     $service->get("/docs/item", function (Request $request, Response $response) {
         return SwaggerGenerator::generate(
@@ -73,6 +87,10 @@ try {
         $controller = new Controller\BasePostController\ItemPostController($request, $response);
         return $controller->createItemPostRequest();
     });
+//
+//    $service->options('/{routes:.+}', function ($request, $response, $args) {
+//        return $response;
+//    });
 
     $service->run();
 } catch (Exception $exception) {
