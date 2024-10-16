@@ -1,0 +1,13 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-local
+      args:
+        - SERVER_ENV=local
+        - WEB_DOCUMENT_ROOT=/var/www/html
+    container_name: "itemservice_web"
+    ports:
+      - "9770:80"
+    volumes:
+      - ./:/var/www/html
