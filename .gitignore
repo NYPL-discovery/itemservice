@@ -6,3 +6,5 @@ vendor
 build
 .lambda
 .idea
+supervisord.log
+supervisord.pid
