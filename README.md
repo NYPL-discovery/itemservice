@@ -11,24 +11,17 @@ This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/),
 
 ## Requirements
 
-* Node.js >=6.0
-* PHP >=7.0
-  * [pdo_pdgsql](http://php.net/manual/en/ref.pdo-pgsql.php)
-
-Homebrew is highly recommended for PHP:
-  * `brew install php71`
-  * `brew install php71-pdo-pgsql`
+* Docker >= v4.34
 
 
 ## Installation
 
 1. Clone the repo.
-2. Install required dependencies.
-   * Run `npm install` to install Node.js packages.
-   * Run `composer install` to install PHP packages.
-3. Setup [local configuration file](#configuration).
+2. Setup [local configuration file](#configuration).
    * Copy the `config/development.env` file to `config/local.env`.
-4. Replace values in `config/local.env` with appropriate local, development configuration values.
+3. Replace values in `config/local.env` with appropriate local, development configuration values.
+4. Start the Docker container and server: `docker compose up`
+5. The app should be accessible at the URL "http://localhost:9770". You can then make a request to the app, such as: `http://localhost:9770/api/v0.1/items`.
 
 ## Configuration
 
@@ -39,18 +32,6 @@ Various files are used to configure and deploy the Lambda.
 `.env` is used by `node-lambda` for deploying to and configuring Lambda in *all* environments.
 
 You should use this file to configure the common settings for the Lambda (e.g. timeout, Node version).
-
-### package.json
-
-Configures `npm run` commands for each environment for deployment and testing. Deployment commands may also set the proper AWS Lambda VPC, security group, and role.
-
-~~~~
-"scripts": {
-    "deploy-development": ...
-    "deploy-qa": ...
-    "deploy-production": ...
-},
-~~~~
 
 ### config/global.env
 
@@ -67,24 +48,6 @@ Configures Lambda event sources (triggers) specific to each environment.
 Secrets *MUST* be encrypted using KMS.
 
 ## Usage
-
-### Process a Lambda Event
-
-To use `node-lambda` to process the sample API Gateway event in `event.json`, run:
-
-~~~~
-npm run test-recap-item
-~~~~
-
-### Run as a Web Server
-
-To use the PHP internal web server, run:
-
-~~~~
-php -S localhost:8888 -t . index.php
-~~~~
-
-You can then make a request to the Lambda: `http://localhost:8888/api/v0.1/items`.
 
 ### Swagger Documentation Generator
 
