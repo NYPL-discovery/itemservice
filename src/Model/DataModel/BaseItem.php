@@ -382,10 +382,10 @@ abstract class BaseItem extends DataModel
     }
 
     /**
-     * @param string $fieldType
+     * @param string $fieldType (optional)
      * @param FixedField $fixedField
      */
-    public function addFixedField($fieldType = '', FixedField $fixedField)
+    public function addFixedField(string $fieldType, FixedField $fixedField)
     {
         $this->fixedFields[(string) $fieldType] = $fixedField;
     }
