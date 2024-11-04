@@ -1,6 +1,5 @@
 FROM webdevops/php-nginx:8.3
 
-
 ADD config/nginx/default.conf /etc/nginx/conf.d
 
 WORKDIR /var/www/html

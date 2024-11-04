@@ -11,3 +11,4 @@ services:
       - "9770:80"
     volumes:
       - ./:/var/www/html
+    tty: true
