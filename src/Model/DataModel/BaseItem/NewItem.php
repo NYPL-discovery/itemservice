@@ -4,7 +4,7 @@ namespace NYPL\Services\Model\DataModel\BaseItem;
 use NYPL\Services\Model\DataModel\BaseItem;
 
 /**
- * @OA\Definition(type="object")
+ * @OA\Schema(type="object")
  */
 class NewItem extends BaseItem
 {

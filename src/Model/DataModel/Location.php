@@ -5,7 +5,7 @@ use NYPL\Starter\Model;
 use NYPL\Starter\Model\ModelTrait\TranslateTrait;
 
 /**
- * @OA\Definition(type="object", required={"code"})
+ * @OA\Schema(type="object", required={"code"})
  */
 class Location extends Model
 {

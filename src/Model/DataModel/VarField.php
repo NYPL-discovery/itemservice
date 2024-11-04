@@ -5,7 +5,7 @@ use NYPL\Starter\Model;
 use NYPL\Starter\Model\ModelTrait\TranslateTrait;
 
 /**
- * @OA\Definition(type="object", required={"fieldTag"})
+ * @OA\Schema(type="object", required={"fieldTag"})
  */
 class VarField extends Model
 {

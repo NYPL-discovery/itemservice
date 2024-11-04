@@ -4,7 +4,7 @@ namespace NYPL\Services\Model\DataModel;
 use NYPL\Starter\Model;
 
 /**
- * @OA\Definition(type="object", required={"tag"})
+ * @OA\Schema(type="object", required={"tag"})
  */
 class SubField extends Model
 {

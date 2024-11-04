@@ -6,7 +6,7 @@ use NYPL\Starter\Model\ModelTrait\TranslateTrait;
 use NYPL\Starter\Model\LocalDateTime;
 
 /**
- * @OA\Definition(type="object", required={"code"})
+ * @OA\Schema(type="object", required={"code"})
  */
 class ItemStatus extends Model
 {

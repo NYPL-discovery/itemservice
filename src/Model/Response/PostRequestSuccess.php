@@ -6,7 +6,7 @@ use NYPL\Starter\BulkModels;
 use NYPL\Starter\Model\LocalDateTime;
 
 /**
- * @OA\Definition(title="PostRequestSuccess", type="object")
+ * @OA\Schema(title="PostRequestSuccess", type="object")
  */
 class PostRequestSuccess
 {

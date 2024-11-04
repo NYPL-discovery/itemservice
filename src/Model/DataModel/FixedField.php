@@ -4,7 +4,7 @@ namespace NYPL\Services\Model\DataModel;
 use NYPL\Starter\Model;
 
 /**
- * @OA\Definition(type="object", required={"label"})
+ * @OA\Schema(type="object", required={"label"})
  */
 class FixedField extends Model
 {

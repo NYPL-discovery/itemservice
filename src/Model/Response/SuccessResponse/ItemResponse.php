@@ -5,7 +5,7 @@ use NYPL\Services\Model\DataModel\BaseItem\Item;
 use NYPL\Starter\Model\Response\SuccessResponse;
 
 /**
- * @OA\Definition(title="ItemResponse", type="object")
+ * @OA\Schema(title="ItemResponse", type="object")
  */
 class ItemResponse extends SuccessResponse
 {

@@ -13,7 +13,7 @@ use NYPL\Starter\Model\ModelTrait\DBUpdateTrait;
 use NYPL\Starter\SchemaClient;
 
 /**
- * @OA\Definition(title="Item", type="object", required={"id"})
+ * @OA\Schema(title="Item", type="object", required={"id"})
  */
 class Item extends BaseItem implements MessageInterface, ReadInterface, DeleteInterface
 {
