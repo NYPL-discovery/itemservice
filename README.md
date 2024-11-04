@@ -13,7 +13,6 @@ This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/),
 
 * Docker >= v4.34
 
-
 ## Installation
 
 1. Clone the repo.
@@ -55,7 +54,7 @@ Create a Swagger route to generate Swagger specification documentation:
 
 ~~~~
 $service->get("/swagger", function (Request $request, Response $response) {
-    return SwaggerGenerator::generate(__DIR__ . "/src", $response);
+    return SwaggerGenerator::generate([__DIR__ . "/src"], $response);
 });
 ~~~~
 
