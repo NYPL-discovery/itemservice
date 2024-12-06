@@ -8,3 +8,4 @@ build
 .idea
 supervisord.log
 supervisord.pid
+.DS_Store
