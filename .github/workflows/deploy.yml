@@ -1,12 +1,17 @@
 name: Deploy
-on: push
+on:
+  push:
+    branches:
+      - php8-update
+  pull_request:
+    branches:
+      - php8-update
 jobs:
   deploy-lambda-qa:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: read
-    if: github.ref == 'refs/heads/php8-update'
     steps:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
