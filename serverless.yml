@@ -1,0 +1,37 @@
+service: app
+
+stages:
+    default:
+        resolvers:
+            local-profile-account:
+                type: aws
+                dashboard: false
+                region: us-west-2
+                profile: project-specific-profile
+            dashboard-provider-account:
+                type: aws
+
+
+provider:
+    name: aws
+    region: us-east-1
+    ecr:
+        images:
+            ItemService:
+                uri: 946183545209.dkr.ecr.us-east-1.amazonaws.com/itemservice-qa:qa-latest
+
+plugins:
+    - ./vendor/bref/bref
+
+functions:
+    ItemService-qa-new:
+        image:
+            name: ItemService
+        events:
+            - httpApi: '*'
+
+# Exclude files from deployment
+package:
+    patterns:
+        - '!node_modules/**'
+        - '!tests/**'
