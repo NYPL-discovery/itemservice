@@ -10,7 +10,6 @@ This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/),
 (using the [Composer](https://getcomposer.org/) autoloader).
 
 ## Requirements
-
 * Docker >= v4.34
 
 ## Installation
@@ -47,6 +46,16 @@ Configures Lambda event sources (triggers) specific to each environment.
 Secrets *MUST* be encrypted using KMS.
 
 ## Usage
+
+### Run as a Web Server
+
+To use the PHP internal web server, run:
+
+~~~~
+docker compose up --build
+~~~~
+
+You can then make a request to the Lambda: `http://localhost:8000/api/v0.1/items`.
 
 ### Swagger Documentation Generator
 
