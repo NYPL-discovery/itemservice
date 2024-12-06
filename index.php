@@ -1,4 +1,6 @@
 <?php
+
+
 require __DIR__ . '/vendor/autoload.php';
 
 use NYPL\Starter\Service;
@@ -17,6 +19,7 @@ try {
     Config::initialize(__DIR__ . '/config');
 
     $service = new Service();
+
     $service->addBodyParsingMiddleware();
 
     $afterMiddleware = function (Request $request, RequestHandler $handler) {
