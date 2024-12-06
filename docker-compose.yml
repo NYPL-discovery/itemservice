@@ -1,8 +1,6 @@
 services:
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: bref/php-83-fpm-dev:latest
     ports: [ '8000:8000' ]
     volumes:
       - .:/var/task
