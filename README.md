@@ -18,8 +18,7 @@ This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/),
 2. Setup [local configuration file](#configuration).
    * Copy the `config/development.env` file to `config/local.env`.
 3. Replace values in `config/local.env` with appropriate local, development configuration values.
-4. Start the Docker container and server: `docker compose up`
-5. The app should be accessible at the URL "http://localhost:9770". You can then make a request to the app, such as: `http://localhost:9770/api/v0.1/items`.
+   * Acquire the value for DB_PASSWORD from the NYPL Digital Dev Parameter Store on AWS.
 
 ## Configuration
 
@@ -49,13 +48,14 @@ Secrets *MUST* be encrypted using KMS.
 
 ### Run as a Web Server
 
-To use the PHP internal web server, run:
+We use Docker Compose to provide a local development environment. See docker-compose.yml and Dockerfile. The base image is the Bref PHP 8.3 FPM Docker Image, which provides a PHP runtime for Lambda. To start the PHP development development server, run:
 
 ~~~~
 docker compose up --build
 ~~~~
 
-You can then make a request to the Lambda: `http://localhost:8000/api/v0.1/items`.
+You can then make a request to the Lambda at localhost:8000, (e.g. `http://localhost:8000/api/v0.1/items`).
+
 
 ### Swagger Documentation Generator
 
