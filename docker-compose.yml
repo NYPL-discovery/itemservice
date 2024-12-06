@@ -1,14 +1,14 @@
 services:
-  web:
+  app:
     build:
       context: .
-      dockerfile: Dockerfile-local
-      args:
-        - SERVER_ENV=local
-        - WEB_DOCUMENT_ROOT=/var/www/html
-    container_name: "itemservice_web"
-    ports:
-      - "9770:80"
+      dockerfile: Dockerfile
+    ports: [ '8000:8000' ]
     volumes:
-      - ./:/var/www/html
-    tty: true
+      - .:/var/task
+    env_file:
+      - ./.env
+      - ./config/local.env
+    environment:
+      HANDLER: index.php
+      DOCUMENT_ROOT: .
