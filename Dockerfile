@@ -1,11 +1,9 @@
-FROM webdevops/php-nginx:8.3
+FROM bref/php-83-fpm:latest
 
-WORKDIR /var/www/html
-ENV WEB_DOCUMENT_ROOT /var/www/html/src
+COPY --from=bref/extra-pgsql-php-83:1 /opt /opt
 
-RUN apt-get update
-RUN apt-get install -y procps
+# Copy the source code in the image
+COPY . /var/task
 
-EXPOSE 80
-
-COPY ./ $WORKDIR
+# Configure the handler file (the entrypoint that receives all HTTP requests)
+CMD ["index.php"]
