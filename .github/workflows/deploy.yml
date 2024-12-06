@@ -13,13 +13,8 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - name: PWD
-        run: ls /app
-
       - name: Install dependencies
         uses: "php-actions/composer@v6"
-        env:
-          COMPOSER: "./composer.json"
         with:
           php_version: "8.3"
           version: "2.5.5"
