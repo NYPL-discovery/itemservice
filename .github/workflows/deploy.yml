@@ -13,6 +13,9 @@ jobs:
       id-token: write
       contents: read
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Install dependencies
         uses: "php-actions/composer@v6"
         with:
