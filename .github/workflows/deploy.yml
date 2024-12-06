@@ -14,10 +14,12 @@ jobs:
       contents: read
     steps:
       - name: Install dependencies
-        uses: php-actions/composer@v6
+        uses: "php-actions/composer@v6"
+        env:
+          COMPOSER: "composer.json"
         with:
           php_version: "8.3"
-          version: 1
+          version: "2.5.5"
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
