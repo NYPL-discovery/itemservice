@@ -14,7 +14,7 @@ jobs:
       contents: read
     steps:
       - name: PWD
-        run: pwd
+        run: ls /app
 
       - name: Install dependencies
         uses: "php-actions/composer@v6"
