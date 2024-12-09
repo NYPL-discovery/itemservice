@@ -252,16 +252,17 @@ final class ItemController extends Controller
 
             return $this->getResponse()
                 ->withStatus(302)
-                ->withHeader('Location',
-                Config::get('CATALOG_URL_PREFIX') . '/b' . $item->getBibIds()[0] . '-i' . $id . '?' . $queryParams
-            );
+                ->withHeader(
+                    'Location',
+                    Config::get('CATALOG_URL_PREFIX') . '/b' . $item->getBibIds()[0] . '-i' . $id . '?' . $queryParams
+                );
         } catch (APIException $exception) {
-
             return $this->getResponse()
                 ->withStatus(302)
-                ->withHeader('Location',
-                Config::get('CATALOG_URL_PREFIX') . '/b1-i' . $id . '?' . $queryParams
-            );
+                ->withHeader(
+                    'Location',
+                    Config::get('CATALOG_URL_PREFIX') . '/b1-i' . $id . '?' . $queryParams
+                );
         }
     }
 }
