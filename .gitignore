@@ -9,3 +9,5 @@ build
 supervisord.log
 supervisord.pid
 .DS_Store
+.phpunit.cache
+.phpunit.result.cache

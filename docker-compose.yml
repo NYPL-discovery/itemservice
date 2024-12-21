@@ -1,7 +1,8 @@
 services:
   app:
     image: bref/php-83-fpm-dev:latest
-    ports: [ '8000:8000' ]
+    ports:
+      - 8000:8000
     volumes:
       - .:/var/task
     env_file:

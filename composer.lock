@@ -119,16 +119,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.334.1",
+            "version": "3.336.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "3938b3467f64a30fed7ee1762a6785f808a5ae4d"
+                "reference": "954bfdfc048840ca34afe2a2e1cbcff6681989c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3938b3467f64a30fed7ee1762a6785f808a5ae4d",
-                "reference": "3938b3467f64a30fed7ee1762a6785f808a5ae4d",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/954bfdfc048840ca34afe2a2e1cbcff6681989c4",
+                "reference": "954bfdfc048840ca34afe2a2e1cbcff6681989c4",
                 "shasum": ""
             },
             "require": {
@@ -211,22 +211,22 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.334.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.336.2"
             },
-            "time": "2024-12-05T01:17:41+00:00"
+            "time": "2024-12-20T19:05:10+00:00"
         },
         {
             "name": "bref/bref",
-            "version": "2.3.11",
+            "version": "2.3.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brefphp/bref.git",
-                "reference": "d36fde4264f614a5db902127411d0d4637ec0e8d"
+                "reference": "5a92388dfb654b4ca7ccda884353a00a1b8b0bc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brefphp/bref/zipball/d36fde4264f614a5db902127411d0d4637ec0e8d",
-                "reference": "d36fde4264f614a5db902127411d0d4637ec0e8d",
+                "url": "https://api.github.com/repos/brefphp/bref/zipball/5a92388dfb654b4ca7ccda884353a00a1b8b0bc3",
+                "reference": "5a92388dfb654b4ca7ccda884353a00a1b8b0bc3",
                 "shasum": ""
             },
             "require": {
@@ -280,7 +280,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brefphp/bref/issues",
-                "source": "https://github.com/brefphp/bref/tree/2.3.11"
+                "source": "https://github.com/brefphp/bref/tree/2.3.12"
             },
             "funding": [
                 {
@@ -292,7 +292,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-21T17:40:28+00:00"
+            "time": "2024-12-20T13:00:03+00:00"
         },
         {
             "name": "crwlr/query-string",
@@ -1365,12 +1365,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/NYPL/php-microservice-starter.git",
-                "reference": "0416cb9efa0fa796b6c4f5562aa385cb39fbc1a6"
+                "reference": "bf6306ee5d7a1a46ada11372da69fd2f74753a99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NYPL/php-microservice-starter/zipball/0416cb9efa0fa796b6c4f5562aa385cb39fbc1a6",
-                "reference": "0416cb9efa0fa796b6c4f5562aa385cb39fbc1a6",
+                "url": "https://api.github.com/repos/NYPL/php-microservice-starter/zipball/bf6306ee5d7a1a46ada11372da69fd2f74753a99",
+                "reference": "bf6306ee5d7a1a46ada11372da69fd2f74753a99",
                 "shasum": ""
             },
             "require": {
@@ -1386,6 +1386,9 @@
             },
             "type": "library",
             "autoload": {
+                "psr-0": {
+                    "": "lib/"
+                },
                 "psr-4": {
                     "NYPL\\Starter\\": [
                         "src/"
@@ -1404,7 +1407,7 @@
                 "issues": "https://github.com/NYPL/php-microservice-starter/issues",
                 "source": "https://github.com/NYPL/php-microservice-starter/tree/php8-update"
             },
-            "time": "2024-12-06T20:32:48+00:00"
+            "time": "2024-12-21T21:09:03+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -2279,8 +2282,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -2358,8 +2361,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -2432,8 +2435,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -3434,16 +3437,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.38",
+            "version": "10.5.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "a86773b9e887a67bc53efa9da9ad6e3f2498c132"
+                "reference": "e6ddda95af52f69c1e0c7b4f977cccb58048798c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a86773b9e887a67bc53efa9da9ad6e3f2498c132",
-                "reference": "a86773b9e887a67bc53efa9da9ad6e3f2498c132",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e6ddda95af52f69c1e0c7b4f977cccb58048798c",
+                "reference": "e6ddda95af52f69c1e0c7b4f977cccb58048798c",
                 "shasum": ""
             },
             "require": {
@@ -3453,7 +3456,7 @@
                 "ext-mbstring": "*",
                 "ext-xml": "*",
                 "ext-xmlwriter": "*",
-                "myclabs/deep-copy": "^1.12.0",
+                "myclabs/deep-copy": "^1.12.1",
                 "phar-io/manifest": "^2.0.4",
                 "phar-io/version": "^3.2.1",
                 "php": ">=8.1",
@@ -3515,7 +3518,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.38"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.40"
             },
             "funding": [
                 {
@@ -3531,7 +3534,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-10-28T13:06:21+00:00"
+            "time": "2024-12-21T05:49:06+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -4451,16 +4454,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.11.1",
+            "version": "3.11.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "19473c30efe4f7b3cd42522d0b2e6e7f243c6f87"
+                "reference": "1368f4a58c3c52114b86b1abe8f4098869cb0079"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/19473c30efe4f7b3cd42522d0b2e6e7f243c6f87",
-                "reference": "19473c30efe4f7b3cd42522d0b2e6e7f243c6f87",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/1368f4a58c3c52114b86b1abe8f4098869cb0079",
+                "reference": "1368f4a58c3c52114b86b1abe8f4098869cb0079",
                 "shasum": ""
             },
             "require": {
@@ -4527,7 +4530,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-11-16T12:02:36+00:00"
+            "time": "2024-12-11T16:04:26+00:00"
         },
         {
             "name": "symfony/config",
@@ -4606,16 +4609,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v7.2.0",
+            "version": "v7.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "23c8aae6d764e2bae02d2a99f7532a7f6ed619cf"
+                "reference": "fefcc18c0f5d0efe3ab3152f15857298868dc2c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/23c8aae6d764e2bae02d2a99f7532a7f6ed619cf",
-                "reference": "23c8aae6d764e2bae02d2a99f7532a7f6ed619cf",
+                "url": "https://api.github.com/repos/symfony/console/zipball/fefcc18c0f5d0efe3ab3152f15857298868dc2c3",
+                "reference": "fefcc18c0f5d0efe3ab3152f15857298868dc2c3",
                 "shasum": ""
             },
             "require": {
@@ -4679,7 +4682,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v7.2.0"
+                "source": "https://github.com/symfony/console/tree/v7.2.1"
             },
             "funding": [
                 {
@@ -4695,7 +4698,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-11-06T14:24:19+00:00"
+            "time": "2024-12-11T03:49:26+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -4786,8 +4789,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
@@ -4864,8 +4867,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
