@@ -6,7 +6,7 @@ use NYPL\Services\Model\DataModel\BaseItem\Item;
 use NYPL\Services\Model\DataModel\BasePostRequest\ItemPostRequest;
 use NYPL\Starter\APIException;
 use NYPL\Starter\Config;
-use NYPL\Starter\Model\ModelInterface\MessageInterface;
+use Psr\Http\Message\MessageInterface;
 
 final class ItemPostController extends BasePostController
 {
