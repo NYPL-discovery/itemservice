@@ -86,10 +86,6 @@ try {
         $controller = new Controller\BasePostController\ItemPostController($request, $response);
         return $controller->createItemPostRequest();
     });
-//
-//    $service->options('/{routes:.+}', function ($request, $response, $args) {
-//        return $response;
-//    });
 
     $service->run();
 } catch (Exception $exception) {
