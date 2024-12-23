@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9678632380f0d4625f12f8e6647dca8b",
+    "content-hash": "4927ad9c19ab8c77c14be8cb74079a8b",
     "packages": [
         {
             "name": "aura/di",
@@ -1365,24 +1365,24 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/NYPL/php-microservice-starter.git",
-                "reference": "bf6306ee5d7a1a46ada11372da69fd2f74753a99"
+                "reference": "cafc55b4a25395c9aa91de7f91608afc1dfe421d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NYPL/php-microservice-starter/zipball/bf6306ee5d7a1a46ada11372da69fd2f74753a99",
-                "reference": "bf6306ee5d7a1a46ada11372da69fd2f74753a99",
+                "url": "https://api.github.com/repos/NYPL/php-microservice-starter/zipball/cafc55b4a25395c9aa91de7f91608afc1dfe421d",
+                "reference": "cafc55b4a25395c9aa91de7f91608afc1dfe421d",
                 "shasum": ""
             },
             "require": {
-                "aura/di": "4.*",
-                "aws/aws-sdk-php": "^3.319.4",
-                "danielstjules/stringy": "^3.1",
-                "faapz/pdo": "^2.2.0",
+                "aura/di": "^4.2.1",
+                "aws/aws-sdk-php": "^3.336.2",
+                "danielstjules/stringy": "^3.1.0",
+                "faapz/pdo": "^2.2.1",
                 "guzzlehttp/guzzle": "^7.9.2",
-                "monolog/monolog": "^3.7.0",
+                "monolog/monolog": "^3.8.1",
                 "slim/slim": "^4.14.0",
                 "vlucas/phpdotenv": "^5.6.1",
-                "zircote/swagger-php": "^4.10.6"
+                "zircote/swagger-php": "^4.11.1"
             },
             "type": "library",
             "autoload": {
@@ -1407,7 +1407,7 @@
                 "issues": "https://github.com/NYPL/php-microservice-starter/issues",
                 "source": "https://github.com/NYPL/php-microservice-starter/tree/php8-update"
             },
-            "time": "2024-12-21T21:09:03+00:00"
+            "time": "2024-12-23T14:49:28+00:00"
         },
         {
             "name": "phpoption/phpoption",

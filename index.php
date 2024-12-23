@@ -11,9 +11,6 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 try {
     Config::initialize(__DIR__ . '/config');
 
