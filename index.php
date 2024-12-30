@@ -88,31 +88,6 @@ try {
         return $controller->createItemPostRequest();
     });
 
-
-    $service->get("/test", function (Request $request, Response $response) {
-        $data = [
-            '$_SERVER' => $_SERVER,
-            '$_POST' => $_POST,
-            '$_GET' => $_GET,
-            '$_REQUEST' => $_REQUEST,
-        ];
-        $json = json_encode($data);
-        $streamBody = fopen('data://text/plain,' . $json,'r');
-        return $response->withBody(new Stream($streamBody));
-    });
-
-    $service->post("/test", function (Request $request, Response $response) {
-        $data = [
-            '$_SERVER' => $_SERVER,
-            '$_POST' => $_POST,
-            '$_GET' => $_GET,
-            '$_REQUEST' => $_REQUEST,
-        ];
-        $json = json_encode($data);
-        $streamBody = fopen('data://text/plain,' . $json,'r');
-        return $response->withBody(new Stream($streamBody));
-    });
-
     $service->run();
 } catch (Exception $exception) {
     ErrorHandler::processShutdownError($exception->getMessage(), $exception);
