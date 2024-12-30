@@ -124,17 +124,14 @@ abstract class BasePostController extends Controller
         $postRequest->translate($this->getRequest()->getParsedBody());
 
         if (!$postRequest->getLastId() && !$postRequest->getIds() && !$postRequest->getLastUpdatedDate()) {
-
             $objectKeys = [];
             $objectValues = [];
-
             $data1 = $this->getRequest()->getParsedBody();
             foreach ($data1 as $objectKey => $objectValue) {
                 $objectKeys[] = $objectKey;
                 $objectValues[] = $objectValue;
                 $translatedObjectKeys[] = $this->translateToObjectName($objectKey);
             }
-
             $data = [
                 '$_POST' => $_POST,
                 'lastId' => $postRequest->getLastId(),
