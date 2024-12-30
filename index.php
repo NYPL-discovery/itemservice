@@ -87,7 +87,23 @@ try {
         return $controller->createItemPostRequest();
     });
 
+
     $service->get("/test", function (Request $request, Response $response) {
+        echo '$_SERVER:' . "\n";
+        print_r($_SERVER);
+
+        echo "\n\n" . '$_POST:' . "\n";
+        print_r($_POST);
+
+        echo "\n\n" . '$_GET:' . "\n";
+        print_r($_GET);
+
+        echo "\n\n" . '$_REQUEST:' . "\n";
+        print_r($_REQUEST);
+
+    });
+
+    $service->post("/test", function (Request $request, Response $response) {
         echo '$_SERVER:' . "\n";
         print_r($_SERVER);
 
