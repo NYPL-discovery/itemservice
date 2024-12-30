@@ -2,6 +2,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
+use GuzzleHttp\Psr7\Stream;
 use NYPL\Starter\Service;
 use NYPL\Services\Controller;
 use NYPL\Starter\SwaggerGenerator;
@@ -89,33 +90,27 @@ try {
 
 
     $service->get("/test", function (Request $request, Response $response) {
-        echo '$_SERVER:' . "\n";
-        print_r($_SERVER);
-
-        echo "\n\n" . '$_POST:' . "\n";
-        print_r($_POST);
-
-        echo "\n\n" . '$_GET:' . "\n";
-        print_r($_GET);
-
-        echo "\n\n" . '$_REQUEST:' . "\n";
-        print_r($_REQUEST);
-
+        $data = [
+            '$_SERVER' => $_SERVER,
+            '$_POST' => $_POST,
+            '$_GET' => $_GET,
+            '$_REQUEST' => $_REQUEST,
+        ];
+        $json = json_encode($data);
+        $streamBody = fopen('data://text/plain,' . $json,'r');
+        return $response->withBody(new Stream($streamBody));
     });
 
     $service->post("/test", function (Request $request, Response $response) {
-        echo '$_SERVER:' . "\n";
-        print_r($_SERVER);
-
-        echo "\n\n" . '$_POST:' . "\n";
-        print_r($_POST);
-
-        echo "\n\n" . '$_GET:' . "\n";
-        print_r($_GET);
-
-        echo "\n\n" . '$_REQUEST:' . "\n";
-        print_r($_REQUEST);
-
+        $data = [
+            '$_SERVER' => $_SERVER,
+            '$_POST' => $_POST,
+            '$_GET' => $_GET,
+            '$_REQUEST' => $_REQUEST,
+        ];
+        $json = json_encode($data);
+        $streamBody = fopen('data://text/plain,' . $json,'r');
+        return $response->withBody(new Stream($streamBody));
     });
 
     $service->run();
