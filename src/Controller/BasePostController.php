@@ -124,6 +124,18 @@ abstract class BasePostController extends Controller
         $postRequest->translate($this->getRequest()->getParsedBody());
 
         if (!$postRequest->getLastId() && !$postRequest->getIds() && !$postRequest->getLastUpdatedDate()) {
+
+
+            $data = [
+                '$_POST' => $_POST,
+                'lastId' => $postRequest->getLastId(),
+                'limit' => $postRequest->getLimit(),
+                'ids' => $postRequest->getIds(),
+                '$postRequest' => $postRequest->getRawData(),
+            ];
+            return $this->getJsonResponse($data);
+
+
             throw new APIException('lastIds, lastUpdatedDate, or ids were not specified', null, 0, null, 400);
         }
 
