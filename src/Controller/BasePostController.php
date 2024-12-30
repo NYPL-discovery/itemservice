@@ -130,7 +130,7 @@ abstract class BasePostController extends Controller
             foreach ($data1 as $objectKey => $objectValue) {
                 $objectKeys[] = $objectKey;
                 $objectValues[] = $objectValue;
-                $translatedObjectKeys[] = $this->translateToObjectName($objectKey);
+                $translatedObjectKeys[] = $postRequest->translateToObjectName($objectKey);
             }
             $data = [
                 '$_POST' => $_POST,
