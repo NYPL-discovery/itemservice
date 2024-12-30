@@ -213,7 +213,8 @@ final class ItemController extends Controller
         $item->read();
 
         // Overwriting status for SCSB calls
-        if ($this->getIdentityHeader()->getIdentity()['aud'] === 'htc_scsb') {
+        $identity = $this->getIdentityHeader()->getIdentity();
+        if (isset($identity['aud']) && $identity['aud'] === 'htc_scsb') {
             $status = new ItemStatus();
             $status->setCode('t');
             $status->setDisplay('IN TRANSIT');
