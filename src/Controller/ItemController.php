@@ -17,7 +17,7 @@ use Psr\Http\Message\MessageInterface;
 
 final class ItemController extends Controller
 {
-    public function createItem($nyplSource = "", $id = "")
+    public function createItem()
     {
         $bulkModels = new BulkModels();
 

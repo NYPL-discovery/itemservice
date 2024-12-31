@@ -2,7 +2,6 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use GuzzleHttp\Psr7\Stream;
 use NYPL\Starter\Service;
 use NYPL\Services\Controller;
 use NYPL\Starter\SwaggerGenerator;
