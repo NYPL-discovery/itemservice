@@ -119,16 +119,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.336.6",
+            "version": "3.336.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "0a99dab427f0a1c082775301141aeac3558691ad"
+                "reference": "3ebc383239f93d6f1e74573112c9d179070d2620"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0a99dab427f0a1c082775301141aeac3558691ad",
-                "reference": "0a99dab427f0a1c082775301141aeac3558691ad",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3ebc383239f93d6f1e74573112c9d179070d2620",
+                "reference": "3ebc383239f93d6f1e74573112c9d179070d2620",
                 "shasum": ""
             },
             "require": {
@@ -211,9 +211,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.336.6"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.336.7"
             },
-            "time": "2024-12-28T04:16:13+00:00"
+            "time": "2025-01-02T19:07:47+00:00"
         },
         {
             "name": "bref/bref",
@@ -1417,12 +1417,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/NYPL/php-microservice-starter.git",
-                "reference": "47f8c9fbd299eedc09e615aa83839f6094554fec"
+                "reference": "76d2fc23e65841de81e0e5bbc00db8741839590f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NYPL/php-microservice-starter/zipball/47f8c9fbd299eedc09e615aa83839f6094554fec",
-                "reference": "47f8c9fbd299eedc09e615aa83839f6094554fec",
+                "url": "https://api.github.com/repos/NYPL/php-microservice-starter/zipball/76d2fc23e65841de81e0e5bbc00db8741839590f",
+                "reference": "76d2fc23e65841de81e0e5bbc00db8741839590f",
                 "shasum": ""
             },
             "require": {
@@ -1459,7 +1459,7 @@
                 "issues": "https://github.com/NYPL/php-microservice-starter/issues",
                 "source": "https://github.com/NYPL/php-microservice-starter/tree/php8-update"
             },
-            "time": "2024-12-31T18:17:14+00:00"
+            "time": "2025-01-02T20:42:22+00:00"
         },
         {
             "name": "paragonie/random_compat",

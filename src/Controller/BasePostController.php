@@ -32,8 +32,13 @@ abstract class BasePostController extends Controller
      * @return ModelSet|void
      * @throws APIException
      */
-    protected function getRecords($lastId = '', $nyplSource = '', $limit = 0, $ids = [], LocalDateTime $lastDateUpdated = null)
-    {
+    protected function getRecords(
+        $lastId = '',
+        $nyplSource = '',
+        $limit = 0,
+        $ids = [],
+        LocalDateTime $lastDateUpdated = null
+    ) {
         $records = new ModelSet($this->getBaseRecord());
 
         if ($nyplSource) {

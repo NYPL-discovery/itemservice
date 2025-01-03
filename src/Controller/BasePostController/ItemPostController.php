@@ -24,8 +24,9 @@ final class ItemPostController extends BasePostController
      * @OA\Post(
      *     path="/v0.1/item-post-requests",
      *     summary="Create a new Item Post Request",
-     *     description="Request records be re-posted to the BibBulk stream. You can specify `lastId` and/or `lastUpdatedDate` or `ids`.
-    If using `lastId` or `lastUpdatedDate`, you can post up to 500 records starting from the record after `lastId` and/or `lastUpdatedDate`.",
+     *     description="Request records be re-posted to the BibBulk stream. You can specify `lastId` and/or
+     *       `lastUpdatedDate` or `ids`. If using `lastId` or `lastUpdatedDate`, you can post up to 500 records starting
+     *        from the record after `lastId` and/or `lastUpdatedDate`.",
      *     tags={"items"},
      *     operationId="createItemPostRequest",
      *     consumes={"application/json"},
