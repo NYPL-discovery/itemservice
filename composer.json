@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Lambda for the NYPL Item Service",
   "require": {
-    "nypl/microservice-starter": "dev-php8-update",
+    "nypl/microservice-starter": "^2.0.0",
     "doctrine/annotations": "^2.0",
     "bref/bref": "^2.3"
   },
