@@ -16,7 +16,7 @@ This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/),
 
 1. Clone the repo.
 2. Setup [local configuration file](#configuration).
-   * Copy the `config/development.env` file to `config/local.env`.
+   * Copy the `config/local.env.dist` file to `config/local.env`.
 3. Replace values in `config/local.env` with appropriate local, development configuration values.
    * Acquire the value for DB_PASSWORD from the NYPL Digital Dev Parameter Store on AWS.
 
