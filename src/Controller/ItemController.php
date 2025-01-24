@@ -17,6 +17,47 @@ use Psr\Http\Message\MessageInterface;
 
 final class ItemController extends Controller
 {
+
+    /**
+     * @OA\Post(
+     *     path="/v0.1/items",
+     *     summary="Create new Items",
+     *     tags={"items"},
+     *     operationId="createItem",
+     *     consumes={"application/json"},
+     *     produces={"application/json"},
+     *     @OA\Parameter(
+     *         name="NewItem",
+     *         in="body",
+     *         description="",
+     *         required=true,
+     *         @OA\Schema(
+     *             type="array",
+     *             @SWG\Items(ref="#/definitions/NewItem")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\Schema(ref="#/definitions/BulkItemsResponse")
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Not found",
+     *         @OA\Schema(ref="#/definitions/ErrorResponse")
+     *     ),
+     *     @OA\Response(
+     *         response="500",
+     *         description="Generic server error",
+     *         @OA\Schema(ref="#/definitions/ErrorResponse")
+     *     ),
+     *     security={
+     *         {
+     *             "api_auth": {"openid write:item"}
+     *         }
+     *     }
+     * )
+     */
     public function createItem()
     {
         $bulkModels = new BulkModels();
