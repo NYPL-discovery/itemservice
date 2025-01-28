@@ -2,6 +2,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
+use GuzzleHttp\Psr7\Stream;
 use NYPL\Starter\Service;
 use NYPL\Services\Controller;
 use NYPL\Starter\SwaggerGenerator;
@@ -32,10 +33,21 @@ try {
     $service->add($afterMiddleware);
 
     $service->get("/docs/item", function (Request $request, Response $response) {
-        return SwaggerGenerator::generate(
+        $response = SwaggerGenerator::generate(
             [__DIR__ . "/src", __DIR__ . "/vendor/nypl/microservice-starter/src"],
             $response
         );
+
+        // This copies the components.schemas object to definitions for backward compatibility
+        // with Swagger 2.
+        $body = json_decode($response->getBody());
+        if (isset($body->components->schemas)) {
+            $body->definitions = $body->components->schemas;
+            $streamBody = fopen('data://text/plain,' . json_encode($body), 'r');
+            $response = $response->withBody(new Stream($streamBody));
+        }
+
+        return $response;
     });
 
     $service->post("/api/v0.1/items", function (Request $request, Response $response) {
