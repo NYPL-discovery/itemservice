@@ -60,4 +60,4 @@ jobs:
 
       - name: Update Lambda
         run: |
-          aws lambda update-function-code --function-name=ItemServiceV2-qa  --region us-east-1 --packageType=Image --image-uri=946183545209.dkr.ecr.us-east-1.amazonaws.com/itemservice-qa:qa-latest
+          aws lambda update-function-code --function-name=ItemServiceV2-qa  --region us-east-1 --image-uri=946183545209.dkr.ecr.us-east-1.amazonaws.com/itemservice-qa:qa-latest
