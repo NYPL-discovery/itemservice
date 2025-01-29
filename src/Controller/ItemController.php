@@ -33,7 +33,7 @@ final class ItemController extends Controller
      *         required=true,
      *         @OA\Schema(
      *             type="array",
-     *             @SWG\Items(ref="#/components/schemas/NewItem")
+     *             @OA\Items(ref="#/components/schemas/NewItem")
      *         )
      *     ),
      *     @OA\Response(
