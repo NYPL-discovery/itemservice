@@ -1,6 +1,7 @@
 node_modules
 dist
 *.swp
+config/local.env
 vendor
 build
 .lambda
@@ -10,4 +11,3 @@ supervisord.pid
 .DS_Store
 .phpunit.cache
 .phpunit.result.cache
-config/local.env
