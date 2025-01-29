@@ -10,3 +10,4 @@ supervisord.pid
 .DS_Store
 .phpunit.cache
 .phpunit.result.cache
+config/local.env
