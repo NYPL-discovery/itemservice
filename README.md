@@ -12,6 +12,14 @@ This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/),
 ## Requirements
 * Docker >= v4.34
 
+## Installation
+
+1. Clone the repo.
+2. Setup [local configuration file](#configuration).
+    * Copy the `config/local.env.dist` file to `config/local.env`.
+3. Replace values in `config/local.env` with appropriate local, development configuration values.
+    * Add values for AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY using keys generated for your IAM user under the nypl-digital-dev AWS account.
+
 ## Configuration
 
 Various files are used to configure and deploy the Lambda.
