@@ -35,17 +35,17 @@ final class BibController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="Successful operation",
-     *         @OA\Schema(ref="#/definitions/ItemsResponse")
+     *         @OA\Schema(ref="#/components/schemas/ItemsResponse")
      *     ),
      *     @OA\Response(
      *         response="404",
      *         description="Not found",
-     *         @OA\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/components/schemas/ErrorResponse")
      *     ),
      *     @OA\Response(
      *         response="500",
      *         description="Generic server error",
-     *         @OA\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/components/schemas/ErrorResponse")
      *     ),
      *     security={
      *         {
@@ -94,22 +94,22 @@ final class BibController extends Controller
      *         in="body",
      *         description="",
      *         required=true,
-     *         @OA\Schema(ref="#/definitions/NewBibItem"),
+     *         @OA\Schema(ref="#/components/schemas/NewBibItem"),
      *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Successful operation",
-     *         @OA\Schema(ref="#/definitions/ItemResponse")
+     *         @OA\Schema(ref="#/components/schemas/ItemResponse")
      *     ),
      *     @OA\Response(
      *         response="404",
      *         description="Not found",
-     *         @OA\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/components/schemas/ErrorResponse")
      *     ),
      *     @OA\Response(
      *         response="500",
      *         description="Generic server error",
-     *         @OA\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/components/schemas/ErrorResponse")
      *     ),
      *     security={
      *         {

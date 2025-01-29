@@ -33,23 +33,23 @@ final class ItemController extends Controller
      *         required=true,
      *         @OA\Schema(
      *             type="array",
-     *             @SWG\Items(ref="#/definitions/NewItem")
+     *             @SWG\Items(ref="#/components/schemas/NewItem")
      *         )
      *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Successful operation",
-     *         @OA\Schema(ref="#/definitions/BulkItemsResponse")
+     *         @OA\Schema(ref="#/components/schemas/BulkItemsResponse")
      *     ),
      *     @OA\Response(
      *         response="404",
      *         description="Not found",
-     *         @OA\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/components/schemas/ErrorResponse")
      *     ),
      *     @OA\Response(
      *         response="500",
      *         description="Generic server error",
-     *         @OA\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/components/schemas/ErrorResponse")
      *     ),
      *     security={
      *         {
@@ -156,17 +156,17 @@ final class ItemController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="Successful operation",
-     *         @OA\Schema(ref="#/definitions/ItemsResponse")
+     *         @OA\Schema(ref="#/components/schemas/ItemsResponse")
      *     ),
      *     @OA\Response(
      *         response="404",
      *         description="Not found",
-     *         @OA\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/components/schemas/ErrorResponse")
      *     ),
      *     @OA\Response(
      *         response="500",
      *         description="Generic server error",
-     *         @OA\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/components/schemas/ErrorResponse")
      *     ),
      *     security={
      *         {
@@ -225,17 +225,17 @@ final class ItemController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="Successful operation",
-     *         @OA\Schema(ref="#/definitions/ItemResponse")
+     *         @OA\Schema(ref="#/components/schemas/ItemResponse")
      *     ),
      *     @OA\Response(
      *         response="404",
      *         description="Not found",
-     *         @OA\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/components/schemas/ErrorResponse")
      *     ),
      *     @OA\Response(
      *         response="500",
      *         description="Generic server error",
-     *         @OA\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/components/schemas/ErrorResponse")
      *     ),
      *     security={
      *         {

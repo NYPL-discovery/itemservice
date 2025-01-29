@@ -25,8 +25,8 @@ final class ItemPostController extends BasePostController
      *     path="/v0.1/item-post-requests",
      *     summary="Create a new Item Post Request",
      *     description="Request records be re-posted to the BibBulk stream. You can specify `lastId` and/or
-     *       `lastUpdatedDate` or `ids`. If using `lastId` or `lastUpdatedDate`, you can post up to 500 records starting
-     *        from the record after `lastId` and/or `lastUpdatedDate`.",
+`lastUpdatedDate` or `ids`. If using `lastId` or `lastUpdatedDate`, you can post up to 500 records
+starting from the record after `lastId` and/or `lastUpdatedDate`.",
      *     tags={"items"},
      *     operationId="createItemPostRequest",
      *     consumes={"application/json"},
@@ -36,12 +36,12 @@ final class ItemPostController extends BasePostController
      *         in="body",
      *         description="",
      *         required=true,
-     *         @OA\Schema(ref="#/definitions/ItemPostRequest")
+     *         @OA\Schema(ref="#/components/schemas/ItemPostRequest")
      *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Successful operation",
-     *         @OA\Schema(ref="#/definitions/PostRequestSuccess")
+     *         @OA\Schema(ref="#/components/schemas/PostRequestSuccess")
      *     ),
      *     @OA\Response(
      *         response="401",
@@ -50,12 +50,12 @@ final class ItemPostController extends BasePostController
      *     @OA\Response(
      *         response="404",
      *         description="Not found",
-     *         @OA\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/components/schemas/ErrorResponse")
      *     ),
      *     @OA\Response(
      *         response="500",
      *         description="Generic server error",
-     *         @OA\Schema(ref="#/definitions/ErrorResponse")
+     *         @OA\Schema(ref="#/components/schemas/ErrorResponse")
      *     ),
      *     security={
      *         {
