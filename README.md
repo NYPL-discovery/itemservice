@@ -61,10 +61,10 @@ Note: This codebase was upgraded to use Swagger 3.x and may produce errors on pl
 We follow a [feature-branch](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow) 
 workflow. Our branches, ordered from least-stable to most stable are:
 
-| branch                                                                                                                                                                              | tier        | AWS account      |
-|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|:-----------------|
-| `qa` [![Build Status](https://github.com/NYPL-discovery/itemservice/actions/workflows/main.yml/badge.svg?branch=qa)](https://github.com/NYPL-discovery/itemservice/actions)         | qa          | nypl-digital-dev |
-| `master` [![Build Status](https://github.com/NYPL-discovery/itemservice/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/NYPL-discovery/itemservice/actions) | production  | nypl-digital-dev |
+| branch                                                                                                                                                                                | tier        | AWS account      |
+|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|:-----------------|
+| `qa` [![Build Status](https://github.com/NYPL-discovery/itemservice/actions/workflows/deploy.yml/badge.svg?branch=qa)](https://github.com/NYPL-discovery/itemservice/actions)         | qa          | nypl-digital-dev |
+| `master` [![Build Status](https://github.com/NYPL-discovery/itemservice/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/NYPL-discovery/itemservice/actions) | production  | nypl-digital-dev |
 
 Cut feature branches off of, and file PRs into `development`.
 Merge `development` => `qa` & `qa` => `master`.
