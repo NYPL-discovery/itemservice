@@ -33,23 +33,10 @@ try {
     $service->add($afterMiddleware);
 
     $service->get("/docs/item", function (Request $request, Response $response) {
-        $response = SwaggerGenerator::generate(
+        return SwaggerGenerator::generate(
             [__DIR__ . "/src", __DIR__ . "/vendor/nypl/microservice-starter/src"],
             $response
         );
-//
-//        // This copies the components.schemas object to definitions for backward compatibility
-//        // with Swagger 2.
-//        $body = json_decode($response->getBody());
-//        if (isset($body->components->schemas)) {
-//            $definitions = json_encode($body->components->schemas);
-//            $definitions = preg_replace('#/schema/components/#', '/definitions/', $definitions);
-//            $body->definitions = json_decode($definitions);
-//            $streamBody = fopen('data://text/plain,' . json_encode($body), 'r');
-//            $response = $response->withBody(new Stream($streamBody));
-//        }
-
-        return $response;
     });
 
     $service->post("/api/v0.1/items", function (Request $request, Response $response) {
