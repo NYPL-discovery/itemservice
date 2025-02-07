@@ -6,9 +6,9 @@ services:
     volumes:
       - .:/var/task
     env_file:
-      - ./.env
       - ./config/local.env
     environment:
       HANDLER: index.php
       DOCUMENT_ROOT: .
       PHP_EXTENSION_DEBUG: 1
+      ENVIRONMENT: local
