@@ -10,6 +10,7 @@ This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/),
 (using the [Composer](https://getcomposer.org/) autoloader).
 
 ## Requirements
+
 * Docker >= v27
 
 ## Installation

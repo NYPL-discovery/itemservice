@@ -2,8 +2,10 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
+use NYPL\Services\Controller\BasePostController\ItemPostController;
+use NYPL\Services\Controller\BibController;
+use NYPL\Services\Controller\ItemController;
 use NYPL\Starter\Service;
-use NYPL\Services\Controller;
 use NYPL\Starter\SwaggerGenerator;
 use NYPL\Starter\Config;
 use NYPL\Starter\ErrorHandler;
@@ -39,24 +41,24 @@ try {
     });
 
     $service->post("/api/v0.1/items", function (Request $request, Response $response) {
-        $controller = new Controller\ItemController($request, $response);
+        $controller = new ItemController($request, $response);
         return $controller->createItem();
     });
 
     $service->get("/api/v0.1/items", function (Request $request, Response $response) {
-        $controller = new Controller\ItemController($request, $response);
+        $controller = new ItemController($request, $response);
         return $controller->getItems();
     });
 
     $service->get("/api/v0.1/items/{nyplSource}/{id}", function (Request $request, Response $response, $parameters) {
-        $controller = new Controller\ItemController($request, $response);
+        $controller = new ItemController($request, $response);
         return $controller->getItem($parameters["nyplSource"], $parameters["id"]);
     });
 
     $service->get(
         "/api/v0.1/bibs/{nyplSource}/{id}/items",
         function (Request $request, Response $response, $parameters) {
-            $controller = new Controller\BibController($request, $response);
+            $controller = new BibController($request, $response);
             return $controller->getBibItems($parameters["nyplSource"], $parameters["id"]);
         }
     );
@@ -64,7 +66,7 @@ try {
     $service->post(
         "/api/v0.1/bibs/{nyplSource}/{id}/items",
         function (Request $request, Response $response, $parameters) {
-            $controller = new Controller\BibController($request, $response);
+            $controller = new BibController($request, $response);
             return $controller->createBibItem($parameters["nyplSource"], $parameters["id"]);
         }
     );
@@ -72,13 +74,13 @@ try {
     $service->get(
         "/api/v0.1/items/{nyplSource}/{id}/catalog-redirect",
         function (Request $request, Response $response, $parameters) {
-            $controller = new Controller\ItemController($request, $response);
+            $controller = new ItemController($request, $response);
             return $controller->redirectToCatalog($parameters["nyplSource"], $parameters["id"]);
         }
     );
 
     $service->post("/api/v0.1/item-post-requests", function (Request $request, Response $response) {
-        $controller = new Controller\BasePostController\ItemPostController($request, $response);
+        $controller = new ItemPostController($request, $response);
         return $controller->createItemPostRequest();
     });
 
