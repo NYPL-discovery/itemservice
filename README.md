@@ -19,7 +19,8 @@ This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/),
 2. Setup [local configuration file](#configuration).
     * Copy the `config/local.env.dist` file to `config/local.env`.
 3. Replace values in `config/local.env` with appropriate local, development configuration values.
-    * Add values for AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY using keys generated for your IAM user under the nypl-digital-dev AWS account.
+    * Add values for AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY using keys generated for your IAM user under the
+nypl-digital-dev AWS account.
 
 ## Configuration
 
@@ -31,15 +32,15 @@ Configures (non-secret) environment variables common to *all* environments.
 
 ### config/*environment*.env
 
-Defines environment variables specific to each environment: local, development, qa, and production. The  actual production values, but the secret values for DB_PASSWORD and SLACK_TOKEN are encrypted using AWS 
-encryption. 
+Defines environment variables specific to each environment: local, development, qa, and production. The  actual 
+production values, but the secret values for DB_PASSWORD and SLACK_TOKEN are encrypted using AWS encryption. 
 
 ## Usage
 
 ### Run as a Web Server
 
-We use Docker Compose to provide a local development environment. See docker-compose.yml and Dockerfile. The base image 
-is the Bref PHP 8.3 FPM Docker Image, which provides a PHP runtime for Lambda. To start the PHP development server, run:
+We use Docker Compose to provide a local development environment. See docker-compose.yml. The base image is the Bref 
+PHP 8.3 FPM Docker Image, which provides a PHP runtime for Lambda. To start the PHP development server, run:
 
 ~~~~
 docker compose up --build

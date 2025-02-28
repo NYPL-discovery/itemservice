@@ -10,5 +10,5 @@ services:
     environment:
       HANDLER: index.php
       DOCUMENT_ROOT: .
-      PHP_EXTENSION_DEBUG: 1
+      PHP_EXTENSION_DEBUG: 0
       ENVIRONMENT: local
