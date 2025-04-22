@@ -119,16 +119,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.342.16",
+            "version": "3.342.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "c7db59f47523f66205b4c429a69b6baf947d3f78"
+                "reference": "8f280712b128db6970d840f33384bf4b12cc65ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c7db59f47523f66205b4c429a69b6baf947d3f78",
-                "reference": "c7db59f47523f66205b4c429a69b6baf947d3f78",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8f280712b128db6970d840f33384bf4b12cc65ea",
+                "reference": "8f280712b128db6970d840f33384bf4b12cc65ea",
                 "shasum": ""
             },
             "require": {
@@ -210,22 +210,22 @@
             "support": {
                 "forum": "https://github.com/aws/aws-sdk-php/discussions",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.342.16"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.342.31"
             },
-            "time": "2025-03-28T18:09:10+00:00"
+            "time": "2025-04-21T18:07:14+00:00"
         },
         {
             "name": "bref/bref",
-            "version": "2.4.1",
+            "version": "2.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brefphp/bref.git",
-                "reference": "55258b3c1cf9c763f1bf8ec7067d445b7bac63a4"
+                "reference": "a9f1142ee6a1740d6686c20951b14169ca614f6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brefphp/bref/zipball/55258b3c1cf9c763f1bf8ec7067d445b7bac63a4",
-                "reference": "55258b3c1cf9c763f1bf8ec7067d445b7bac63a4",
+                "url": "https://api.github.com/repos/brefphp/bref/zipball/a9f1142ee6a1740d6686c20951b14169ca614f6c",
+                "reference": "a9f1142ee6a1740d6686c20951b14169ca614f6c",
                 "shasum": ""
             },
             "require": {
@@ -279,7 +279,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brefphp/bref/issues",
-                "source": "https://github.com/brefphp/bref/tree/2.4.1"
+                "source": "https://github.com/brefphp/bref/tree/2.4.3"
             },
             "funding": [
                 {
@@ -291,7 +291,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-30T17:35:53+00:00"
+            "time": "2025-04-21T16:56:27+00:00"
         },
         {
             "name": "crwlr/query-string",
@@ -495,26 +495,29 @@
         },
         {
             "name": "doctrine/deprecations",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/deprecations.git",
-                "reference": "31610dbb31faa98e6b5447b62340826f54fbc4e9"
+                "reference": "459c2f5dd3d6a4633d3b5f46ee2b1c40f57d3f38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/31610dbb31faa98e6b5447b62340826f54fbc4e9",
-                "reference": "31610dbb31faa98e6b5447b62340826f54fbc4e9",
+                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/459c2f5dd3d6a4633d3b5f46ee2b1c40f57d3f38",
+                "reference": "459c2f5dd3d6a4633d3b5f46ee2b1c40f57d3f38",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
             },
+            "conflict": {
+                "phpunit/phpunit": "<=7.5 || >=13"
+            },
             "require-dev": {
-                "doctrine/coding-standard": "^9 || ^12",
-                "phpstan/phpstan": "1.4.10 || 2.0.3",
+                "doctrine/coding-standard": "^9 || ^12 || ^13",
+                "phpstan/phpstan": "1.4.10 || 2.1.11",
                 "phpstan/phpstan-phpunit": "^1.0 || ^2",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.6 || ^10.5 || ^11.5 || ^12",
                 "psr/log": "^1 || ^2 || ^3"
             },
             "suggest": {
@@ -534,9 +537,9 @@
             "homepage": "https://www.doctrine-project.org/",
             "support": {
                 "issues": "https://github.com/doctrine/deprecations/issues",
-                "source": "https://github.com/doctrine/deprecations/tree/1.1.4"
+                "source": "https://github.com/doctrine/deprecations/tree/1.1.5"
             },
-            "time": "2024-12-07T21:18:45+00:00"
+            "time": "2025-04-07T20:06:18+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -617,16 +620,16 @@
         },
         {
             "name": "faapz/pdo",
-            "version": "v2.2.1",
+            "version": "v2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FaaPz/PDO.git",
-                "reference": "d1de9b42b3d11188886055d93a2d68cc2765fa10"
+                "reference": "df6663071257409fb7d1766c8a41c17e377ceea2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FaaPz/PDO/zipball/d1de9b42b3d11188886055d93a2d68cc2765fa10",
-                "reference": "d1de9b42b3d11188886055d93a2d68cc2765fa10",
+                "url": "https://api.github.com/repos/FaaPz/PDO/zipball/df6663071257409fb7d1766c8a41c17e377ceea2",
+                "reference": "df6663071257409fb7d1766c8a41c17e377ceea2",
                 "shasum": ""
             },
             "require": {
@@ -635,8 +638,8 @@
             },
             "require-dev": {
                 "phan/phan": "^5",
-                "phpunit/phpunit": "^8",
-                "squizlabs/php_codesniffer": "3.*"
+                "phpunit/phpunit": "^8 || ^9",
+                "squizlabs/php_codesniffer": "^3"
             },
             "type": "library",
             "autoload": {
@@ -672,9 +675,9 @@
             "support": {
                 "docs": "https://github.com/FaaPz/PDO/blob/master/docs/README.md",
                 "issues": "https://github.com/FaaPz/PDO/issues",
-                "source": "https://github.com/FaaPz/PDO/tree/v2.2.1"
+                "source": "https://github.com/FaaPz/PDO/tree/v2.2.3"
             },
-            "time": "2022-08-11T01:08:08+00:00"
+            "time": "2025-04-11T18:14:01+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -1412,23 +1415,23 @@
         },
         {
             "name": "nypl/microservice-starter",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NYPL/php-microservice-starter.git",
-                "reference": "131a45602bd03b4e957c16e0d58d51892dd63979"
+                "reference": "4916d3077de04b2ef56f3d06d0138c64b7a45471"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NYPL/php-microservice-starter/zipball/131a45602bd03b4e957c16e0d58d51892dd63979",
-                "reference": "131a45602bd03b4e957c16e0d58d51892dd63979",
+                "url": "https://api.github.com/repos/NYPL/php-microservice-starter/zipball/4916d3077de04b2ef56f3d06d0138c64b7a45471",
+                "reference": "4916d3077de04b2ef56f3d06d0138c64b7a45471",
                 "shasum": ""
             },
             "require": {
                 "aura/di": "^4.2.1",
                 "aws/aws-sdk-php": "^3.336.2",
                 "doctrine/annotations": "^2.0",
-                "faapz/pdo": "^2.2.1",
+                "faapz/pdo": "^2.2.3",
                 "guzzlehttp/guzzle": "^7.9.2",
                 "monolog/monolog": "^3.8.1",
                 "slim/slim": "^4.14.0",
@@ -1457,9 +1460,9 @@
             "description": "NYPL Microservice Starter",
             "support": {
                 "issues": "https://github.com/NYPL/php-microservice-starter/issues",
-                "source": "https://github.com/NYPL/php-microservice-starter/tree/2.0.0"
+                "source": "https://github.com/NYPL/php-microservice-starter/tree/2.0.1"
             },
-            "time": "2025-03-31T15:30:58+00:00"
+            "time": "2025-04-22T15:46:32+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -1566,16 +1569,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "5.6.1",
+            "version": "5.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "e5e784149a09bd69d9a5e3b01c5cbd2e2bd653d8"
+                "reference": "92dde6a5919e34835c506ac8c523ef095a95ed62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/e5e784149a09bd69d9a5e3b01c5cbd2e2bd653d8",
-                "reference": "e5e784149a09bd69d9a5e3b01c5cbd2e2bd653d8",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/92dde6a5919e34835c506ac8c523ef095a95ed62",
+                "reference": "92dde6a5919e34835c506ac8c523ef095a95ed62",
                 "shasum": ""
             },
             "require": {
@@ -1624,9 +1627,9 @@
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
             "support": {
                 "issues": "https://github.com/phpDocumentor/ReflectionDocBlock/issues",
-                "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/5.6.1"
+                "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/5.6.2"
             },
-            "time": "2024-12-07T09:39:29+00:00"
+            "time": "2025-04-13T19:20:35+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -5866,16 +5869,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.12.0",
+            "version": "3.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "2d1b63db139c3c6ea0c927698e5160f8b3b8d630"
+                "reference": "6d4cf6032d4b718f168c90a96e36c7d0eaacb2aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/2d1b63db139c3c6ea0c927698e5160f8b3b8d630",
-                "reference": "2d1b63db139c3c6ea0c927698e5160f8b3b8d630",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/6d4cf6032d4b718f168c90a96e36c7d0eaacb2aa",
+                "reference": "6d4cf6032d4b718f168c90a96e36c7d0eaacb2aa",
                 "shasum": ""
             },
             "require": {
@@ -5946,7 +5949,7 @@
                     "type": "thanks_dev"
                 }
             ],
-            "time": "2025-03-18T05:04:51+00:00"
+            "time": "2025-04-13T04:10:18+00:00"
         },
         {
             "name": "symfony/config",

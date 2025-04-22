@@ -28,7 +28,8 @@ try {
             ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS')
             ->withHeader('Access-Control-Allow-Credentials', 'true')
             ->withHeader('X-NYPL-Original-Request', $request->getUri()->__toString())
-            ->withHeader('X-NYPL-Response-Date', date('c'));
+            ->withHeader('X-NYPL-Response-Date', date('c'))
+            ->withHeader('Content-Type', 'application/json');
     };
 
     $service->add($afterMiddleware);
