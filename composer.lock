@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed88be2e57fe7cfc919a98dc323ce037",
+    "content-hash": "aefa24c71fd148e60681c62c6af862d8",
     "packages": [
         {
             "name": "aura/di",
@@ -1415,16 +1415,16 @@
         },
         {
             "name": "nypl/microservice-starter",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NYPL/php-microservice-starter.git",
-                "reference": "3ee607f32dc6e51a7723fe68cb6db17550b7922f"
+                "reference": "1933f075036563dbb808913f70b9a52079dfe8d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NYPL/php-microservice-starter/zipball/3ee607f32dc6e51a7723fe68cb6db17550b7922f",
-                "reference": "3ee607f32dc6e51a7723fe68cb6db17550b7922f",
+                "url": "https://api.github.com/repos/NYPL/php-microservice-starter/zipball/1933f075036563dbb808913f70b9a52079dfe8d3",
+                "reference": "1933f075036563dbb808913f70b9a52079dfe8d3",
                 "shasum": ""
             },
             "require": {
@@ -1460,9 +1460,9 @@
             "description": "NYPL Microservice Starter",
             "support": {
                 "issues": "https://github.com/NYPL/php-microservice-starter/issues",
-                "source": "https://github.com/NYPL/php-microservice-starter/tree/2.0.2"
+                "source": "https://github.com/NYPL/php-microservice-starter/tree/2.0.3"
             },
-            "time": "2025-07-24T15:03:31+00:00"
+            "time": "2026-04-28T14:11:48+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -6481,10 +6481,10 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }
