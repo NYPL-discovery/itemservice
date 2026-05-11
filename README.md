@@ -42,9 +42,20 @@ production values, but the secret values for DB_PASSWORD and SLACK_TOKEN are enc
 We use Docker Compose to provide a local development environment. See docker-compose.yml. The base image is the Bref 
 PHP 8.3 FPM Docker Image, which provides a PHP runtime for Lambda. To start the PHP development server, run:
 
-~~~~
+Ensure you have all packages:
+```
+composer install
+```
+
+Ensure you have temporary aws ini credentials:
+```
+aws configure export-credentials --profile nypl-digital-dev --format env-no-export > .env-aws
+```
+
+Start app:
+```
 docker compose up --build
-~~~~
+```
 
 You can then make a request to the Lambda at localhost:8000, (e.g. `http://localhost:8000/api/v0.1/items`).
 

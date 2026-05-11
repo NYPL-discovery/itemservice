@@ -1,13 +1,15 @@
 services:
   app:
-    image: bref/php-83-fpm-dev:latest
+    image: bref/arm-php-83-fpm-dev:latest
     ports:
       - 8000:8000
     volumes:
       - .:/var/task
     env_file:
       - ./config/local.env
+      - ./.env-aws
     environment:
       HANDLER: index.php
       DOCUMENT_ROOT: .
       ENVIRONMENT: local
+      AWS_REGION: us-east-1
