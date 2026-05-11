@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Lambda for the NYPL Item Service",
   "require": {
-    "nypl/microservice-starter": "^2.0.0",
+    "nypl/microservice-starter": "^2.0.3",
     "doctrine/annotations": "^2.0",
     "bref/bref": "^2.3"
   },
