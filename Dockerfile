@@ -1,4 +1,4 @@
-FROM bref/arm-php-83-fpm:latest
+FROM bref/php-83-fpm:latest
 
 COPY --from=bref/extra-pgsql-php-83:latest /opt /opt
 
