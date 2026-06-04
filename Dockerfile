@@ -1,6 +1,6 @@
-FROM bref/arm-php-83-fpm:latest
+FROM bref/php-83-fpm:latest
 
-COPY --from=bref/extra-pgsql-php-83:1 /opt /opt
+COPY --from=bref/extra-pgsql-php-83:latest /opt /opt
 
 # Copy the source code in the image
 COPY . /var/task
